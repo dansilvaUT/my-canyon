@@ -3,7 +3,8 @@ CREATE TABLE IF NOT EXISTS canyon_users (
     username VARCHAR(60) NOT NULL,
     email VARCHAR(60) NOT NULL,
     profile_pic TEXT,
-    password VARCHAR(250) NOT NULL
+    password VARCHAR(250) NOT NULL,
+    date_add TIMESTAMP
 )
 
 CREATE TABLE IF NOT EXISTS canyons (
@@ -14,7 +15,8 @@ CREATE TABLE IF NOT EXISTS canyons (
     canyon_rating INTEGER,
     canyon_city VARCHAR(100),
     canyon_state VARCHAR(20),
-    canyon_owner INTEGER REFERENCES canyon_users(user_id)
+    canyon_owner INTEGER REFERENCES canyon_users(user_id),
+    date_created TIMESTAMP
 )
 
 CREATE TABLE IF NOT EXISTS comments (
