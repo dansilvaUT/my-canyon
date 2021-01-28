@@ -2,12 +2,16 @@ INSERT INTO canyon_users (
     username,
     email, 
     profile_pic,
-    password
+    password,
+    about,
+    date_added
 ) VALUES (
     ${username},
     ${email},
     ${profile_pic},
-    ${hash}
+    ${hash},
+    ${about},
+    ${date}
 )
 
-RETURNING user_id, username, email, profile_pic;
+RETURNING user_id, username, email, profile_pic, about, date_added;
