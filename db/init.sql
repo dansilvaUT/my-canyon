@@ -4,7 +4,8 @@ CREATE TABLE IF NOT EXISTS canyon_users (
     email VARCHAR(60) NOT NULL,
     profile_pic TEXT,
     password VARCHAR(250) NOT NULL,
-    date_add TIMESTAMP
+    about TEXT,
+    date_added TIMESTAMP
 )
 
 CREATE TABLE IF NOT EXISTS canyons (
