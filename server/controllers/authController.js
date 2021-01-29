@@ -15,7 +15,7 @@ module.exports = {
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(password, salt);
 
-        let date = new Date();
+        let date = new Date();//TODO Need to remove the generated profile pic once S3 is set up
         const newUser = await db.users.register({ username, email, hash, profile_pic: `https://robohash.org/${username}.png`, about: null, date });
 
         req.session.user = newUser[0];
@@ -50,7 +50,7 @@ module.exports = {
 
     getUser: (req, res) => {
         if (req.session.user) {
-            res.send(req.session.user);
+            return res.send(req.session.user);
         }
         res.status(404).send(`No user found`);
     },
@@ -60,7 +60,7 @@ module.exports = {
         const users = await db.users.get_all_users();
 
         if (!users[0]) {
-            res.status(204).send(`No users found`);
+            return res.status(204).send(`No users found`);
         }
         res.status(200).send(users);
     }

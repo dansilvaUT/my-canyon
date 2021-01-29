@@ -3,6 +3,8 @@ const express = require('express'),
     massive = require('massive'),
     session = require('express-session'),
     authCtlr = require('./controllers/authController'),
+    canyonCtlr = require('./controllers/canyonController'),
+    commentCtlr = require('./controllers/commentController'),
     { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env,
     app = express();
 
@@ -31,6 +33,18 @@ app.post('/api/auth/logout', authCtlr.logout);
 app.get('/api/auth/me', authCtlr.getUser);
 app.get('/api/auth/users', authCtlr.getUsers);
 
+//CANYON(POSTS) ENDPOINTS
+app.get('/api/canyons', canyonCtlr.getCanyons);
+app.get('/api/canyons/:id', canyonCtlr.getCanyon);
+app.post('/api/canyons', canyonCtlr.addCanyon);
+app.delete('/api/canyons/:id', canyonCtlr.deleteCanyon);
+app.put('/api/canyons/:id', canyonCtlr.editCanyon);
 
+
+//EDIT COMMENTS ENDPOINTS
+app.get('/api/comments', commentCtlr.getComments);
+app.post('/api/comments/:id', commentCtlr.addComment);
+app.delete('/api/comments', commentCtlr.deleteComment);
+app.put('/api/comments', commentCtlr.editComment);
 //Listen for changes on our server
 app.listen(SERVER_PORT, console.log(`MyCanyon listening on ${SERVER_PORT}`));

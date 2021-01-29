@@ -10,4 +10,4 @@ u.username
 FROM
 canyons c
 JOIN canyon_users u ON u.user_id = c.canyon_owner
-WHERE lower(c.canyon_name) = ${canyon_name};
+WHERE c.canyon_id = ${id};
