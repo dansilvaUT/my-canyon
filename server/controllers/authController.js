@@ -38,6 +38,8 @@ module.exports = {
             return res.status(401).send(`Ah, Ah, Ah, you didn\'t say the magic word...`);
         }
 
+        delete result.password;
+
         req.session.user = result;
         res.status(200).send(req.session.user);
 
