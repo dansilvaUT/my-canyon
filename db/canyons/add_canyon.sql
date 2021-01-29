@@ -5,7 +5,8 @@ INSERT INTO canyons (
     canyon_rating, 
     canyon_city, 
     canyon_state, 
-    canyon_owner
+    canyon_owner,
+    date_created
 ) VALUES (
     ${canyon_name},
     ${canyon_description},
@@ -13,5 +14,6 @@ INSERT INTO canyons (
     ${canyon_rating},
     ${canyon_city},
     ${canyon_state},
-    ${id}
+    ${user_id},
+    ${date}
 );

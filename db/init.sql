@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS canyons (
     canyon_city VARCHAR(100),
     canyon_state VARCHAR(20),
     canyon_owner INTEGER REFERENCES canyon_users(user_id),
-    date_created TIMESTAMP
+    date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 
 CREATE TABLE IF NOT EXISTS comments (
