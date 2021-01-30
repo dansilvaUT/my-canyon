@@ -1,12 +1,14 @@
 import { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import axios from 'axios';
+import Comment from '../../Components/Comments/Comment';
 
 class Canyon extends Component {
     constructor() {
         super();
         this.state = {
-            canyon: {}
+            canyon: {},
+            comments: []
         }
     }
 
@@ -16,11 +18,13 @@ class Canyon extends Component {
 
         axios.get(`/api/canyons/${parsedID}`)
             .then(canyon => {
-                this.setState({ canyon: canyon.data})
+                this.setState({ canyon: canyon.data })
             })
     }
 
     render() {
+        const { id } = this.props.match.params;
+        const parsedID = parseInt(id);
         return (
             <>
                 <Header />
@@ -29,9 +33,13 @@ class Canyon extends Component {
                 <img src={this.state.canyon.canyon_pic} alt={this.state.canyon.canyon_name} />
                 <p>Add by {this.state.canyon.username}</p>
                 <p>{this.state.canyon.canyon_description}</p>
+                <h1>Comments</h1>
+                <Comment id={parsedID}/>
             </>
         );
     }
 }
+
+
 
 export default Canyon;

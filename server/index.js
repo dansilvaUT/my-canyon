@@ -42,7 +42,7 @@ app.put('/api/canyons/:id', canyonCtlr.editCanyon);
 
 
 //EDIT COMMENTS ENDPOINTS
-app.get('/api/comments', commentCtlr.getComments);
+app.get('/api/comments/:id', commentCtlr.getComments);
 app.post('/api/comments/:id', commentCtlr.addComment);
 app.delete('/api/comments', commentCtlr.deleteComment);
 app.put('/api/comments', commentCtlr.editComment);

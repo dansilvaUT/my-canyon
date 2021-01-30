@@ -50,7 +50,6 @@ class Login extends Component {
     }
 
     render() {
-        console.log(this.state.username)
         return (
             <Container maxWidth='sm'>
                 <h1 className='heading login-heading'>Welcome to MyCanyon!</h1>
