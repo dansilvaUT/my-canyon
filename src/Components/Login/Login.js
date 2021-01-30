@@ -2,6 +2,10 @@ import { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { getUser } from '../../redux/reducers/userReducer';
+import Container from '@material-ui/core/Container';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import './login.scss';
 
 class Login extends Component {
     constructor() {
@@ -46,57 +50,69 @@ class Login extends Component {
     }
 
     render() {
+        console.log(this.state.username)
         return (
-            <section>
-                <h1>Welcome to MyCanyon!</h1>
-                <section>
+            <Container maxWidth='sm'>
+                <h1 className='heading login-heading'>Welcome to MyCanyon!</h1>
+                <section className='login'>
                     {this.state.registerView
                         ? (
                             <>
                                 <h3>Sign Up</h3>
-                                <input
+                                <TextField
                                     value={this.state.email}
                                     name='email'
-                                    placeholder='Email'
+                                    label='Email'
                                     onChange={e => this.handleInputChange(e)}
+                                    variant='filled'
                                 />
                             </>
                         )
                         : <h3>Login</h3>}
-                    <input
+                    {/* <input
                         value={this.state.username}
                         name='username'
                         placeholder='Username'
-                        onChange={e => this.handleInputChange(e)} />
-                    <input
+                        onChange={e => this.handleInputChange(e)} /> */}
+                    <TextField
+                        value={this.state.username}
+                        label='Username'
+                        name='username'
+                        onChange={e => this.handleInputChange(e)}
+                        variant="filled"
+
+                    />
+                    <TextField
                         value={this.state.password}
                         name='password'
-                        placeholder='Password'
+                        label='Password'
                         type='password'
                         onChange={e => this.handleInputChange(e)}
+                        variant='filled'
                     />
                     {this.state.registerView
                         ? (
                             <>
-                                <input
+                                <TextField
                                     value={this.state.verPassword}
                                     name='verPassword'
-                                    placeholder='Verify Password'
+                                    label='Verify Password'
                                     type='password'
                                     onChange={e => this.handleInputChange(e)}
+                                    variant='filled'
                                 />
-                                <button onClick={()=>this.hanldeSignUp()}>Sign Up</button>
+                                <Button className='btn sign-up-btn' variant="outlined" onClick={() => this.hanldeSignUp()}>Sign Up</Button>
                                 <p>Have an account? <span onClick={() => this.toggleView()}>Login here</span></p>
                             </>
                         )
                         : (
                             <>
-                                <button onClick={() => this.handleLogin()}>Login</button>
+                                <Button className='btn login-btn' variant="outlined" onClick={() => this.handleLogin()}>Login</Button>
                                 <p>Don't have an account? <span onClick={() => this.toggleView()}>Sign up here</span></p>
                             </>
                         )}
                 </section>
-            </section>
+            </Container>
 
         );
     }

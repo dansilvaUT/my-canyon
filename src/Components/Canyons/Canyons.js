@@ -14,8 +14,7 @@ class Canyons extends Component {
 
     render() {
         const { canyons } = this.props;
-        console.log(canyons)
-        return (
+        return ( 
             <>
                 <Header />
                 Render Canyons Here
