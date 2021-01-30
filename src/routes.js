@@ -3,6 +3,7 @@ import Login from './Components/Login/Login';
 import Canyons from './Components/Canyons/Canyons';
 import Profile from './Components/Profile/Profile';
 import Canyoneers from './Components/Canyoneers/Canyoneers';
+import Canyon from './Components/Canyons/Canyon';
 
 export default (
     <Switch>
@@ -10,5 +11,6 @@ export default (
         <Route path='/canyons' component={Canyons} />
         <Route path='/profile' component={Profile} />
         <Route path='/canyoneers' component={Canyoneers} />
+        <Route path='/canyon/:id' component={Canyon} />
     </Switch>
 );
