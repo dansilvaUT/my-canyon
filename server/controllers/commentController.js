@@ -1,7 +1,8 @@
 module.exports = {
     getComments: async (req, res) => {
         const db = req.app.get('db');
-        const comments = await db.comments.get_comments();
+        const { id } = req.params;
+        const comments = await db.comments.get_comments({ id });
 
         if (!comments[0]) {
             return res.status(404).send(`No comments found`);
