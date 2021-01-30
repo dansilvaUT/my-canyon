@@ -13,7 +13,7 @@ module.exports = {
     getCanyon: async (req, res) => {
         const { id } = req.params;
         const db = req.app.get('db');
-
+        
         const result = await db.canyons.get_canyon({ id })
         const canyon = result[0];
         res.status(200).send(canyon);
