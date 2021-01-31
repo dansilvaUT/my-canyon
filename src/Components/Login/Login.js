@@ -51,13 +51,13 @@ class Login extends Component {
 
     render() {
         return (
-            <Container maxWidth='sm'>
-                <h1 className='heading login-heading'>Welcome to MyCanyon!</h1>
+            <Container className='main' maxWidth='md'>
+                <h1 className='heading welcome-heading'>Welcome to MyCanyon!</h1>
                 <section className='login'>
                     {this.state.registerView
                         ? (
                             <>
-                                <h3>Sign Up</h3>
+                                <h3 className='toggle-header'>Sign Up</h3>
                                 <TextField
                                     value={this.state.email}
                                     name='email'
@@ -67,7 +67,7 @@ class Login extends Component {
                                 />
                             </>
                         )
-                        : <h3>Login</h3>}
+                        : <h3 className='toggle-header'>Login</h3>}
                     {/* <input
                         value={this.state.username}
                         name='username'
@@ -101,13 +101,13 @@ class Login extends Component {
                                     variant='filled'
                                 />
                                 <Button className='btn sign-up-btn' variant="outlined" onClick={() => this.hanldeSignUp()}>Sign Up</Button>
-                                <p>Have an account? <span onClick={() => this.toggleView()}>Login here</span></p>
+                                <p>Have an account? <span className='toggle-span' onClick={() => this.toggleView()}>Login here</span></p>
                             </>
                         )
                         : (
                             <>
                                 <Button className='btn login-btn' variant="outlined" onClick={() => this.handleLogin()}>Login</Button>
-                                <p>Don't have an account? <span onClick={() => this.toggleView()}>Sign up here</span></p>
+                                <p>Don't have an account? <span className='toggle-span' onClick={() => this.toggleView()}>Sign up here</span></p>
                             </>
                         )}
                 </section>

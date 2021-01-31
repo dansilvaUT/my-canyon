@@ -1,8 +1,49 @@
+@import '../base';
+
+body {
+    background-color: $background;
+    background-image:url('../../images/app-background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+}
+
+
+.welcome-heading {
+    font-size: 5rem;
+    color: white;
+}
 
 .login {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 10px;
+    background-color: $form-background;
+    border-radius: $border-radius;
+    padding: 29px;
+    margin: 0 auto;
+    width: $form-width;
+
 }
-    
+
+.toggle-header {
+    font-size: 2.5rem;
+    margin: 0 0 20px 0;
+    color: $heading-color;
+}
+
+.login-btn,
+.sign-up-btn {
+    border: 1px solid $submit!important;
+    color: $submit!important;
+    margin-top: 10px!important;
+}
+
+.toggle-span {
+    color: $link;
+}
+
+.toggle-span:hover {
+    border-bottom: 1px solid $link;
+    cursor: pointer;
+}
