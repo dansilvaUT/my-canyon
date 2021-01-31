@@ -2,7 +2,6 @@ import { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { getUser } from '../../redux/reducers/userReducer';
-import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './login.scss';
@@ -51,7 +50,7 @@ class Login extends Component {
 
     render() {
         return (
-            <Container className='main' maxWidth='md'>
+            <section className='main'>
                 <h1 className='heading welcome-heading'>Welcome to MyCanyon!</h1>
                 <section className='login'>
                     {this.state.registerView
@@ -64,22 +63,18 @@ class Login extends Component {
                                     label='Email'
                                     onChange={e => this.handleInputChange(e)}
                                     variant='filled'
+                                    className='input input-login'
                                 />
                             </>
                         )
                         : <h3 className='toggle-header'>Login</h3>}
-                    {/* <input
-                        value={this.state.username}
-                        name='username'
-                        placeholder='Username'
-                        onChange={e => this.handleInputChange(e)} /> */}
                     <TextField
                         value={this.state.username}
                         label='Username'
                         name='username'
                         onChange={e => this.handleInputChange(e)}
                         variant="filled"
-
+                        className='input input-login'
                     />
                     <TextField
                         value={this.state.password}
@@ -88,6 +83,7 @@ class Login extends Component {
                         type='password'
                         onChange={e => this.handleInputChange(e)}
                         variant='filled'
+                        className='input input-login'
                     />
                     {this.state.registerView
                         ? (
@@ -99,19 +95,20 @@ class Login extends Component {
                                     type='password'
                                     onChange={e => this.handleInputChange(e)}
                                     variant='filled'
+                                    className='input input-login'
                                 />
                                 <Button className='btn sign-up-btn' variant="outlined" onClick={() => this.hanldeSignUp()}>Sign Up</Button>
-                                <p>Have an account? <span className='toggle-span' onClick={() => this.toggleView()}>Login here</span></p>
+                                <p className='toggle-queue'>Have an account? <span className='toggle-span' onClick={() => this.toggleView()}>Login here</span></p>
                             </>
                         )
                         : (
                             <>
-                                <Button className='btn login-btn' variant="outlined" onClick={() => this.handleLogin()}>Login</Button>
-                                <p>Don't have an account? <span className='toggle-span' onClick={() => this.toggleView()}>Sign up here</span></p>
+                                <Button className='btn login-btn' variant="contained" onClick={() => this.handleLogin()}>Login</Button>
+                                <p className='toggle-queue'>Don't have an account? <span className='toggle-span' onClick={() => this.toggleView()}>Sign up here</span></p>
                             </>
                         )}
                 </section>
-            </Container>
+            </section>
 
         );
     }

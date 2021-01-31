@@ -1,17 +1,25 @@
 @import '../base';
 
-body {
-    background-color: $background;
+.main {
+    text-align: center;
     background-image:url('../../images/app-background.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size:cover;
+    height: 100vh;
+    width: 100vw;
+    margin:  0;
 }
 
-
 .welcome-heading {
+    margin-top: 0;
+    padding-top: 25px;
     font-size: 5rem;
     color: white;
+    text-shadow: -1px 1px 1px #000,
+				  1px 1px 1px #000,
+				  1px -1px 0 #000,
+				  -1px -1px 0 #000;
 }
 
 .login {
@@ -23,7 +31,6 @@ body {
     padding: 29px;
     margin: 0 auto;
     width: $form-width;
-
 }
 
 .toggle-header {
@@ -32,11 +39,23 @@ body {
     color: $heading-color;
 }
 
+.input-login {
+    background-color: white!important;
+    border-radius: $input-radius;
+}
+
 .login-btn,
 .sign-up-btn {
     border: 1px solid $submit!important;
-    color: $submit!important;
+    color: $heading-color!important;
     margin-top: 10px!important;
+    background-color: $submit!important;
+    font-weight: bold!important;
+}
+
+.toggle-queue {
+    color: $heading-color;
+    font-weight: bold;
 }
 
 .toggle-span {

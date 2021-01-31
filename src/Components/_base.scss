@@ -1,11 +1,16 @@
 $background: #19136D;
-$form-background: #222020;
+$form-background: #222020d0;
 $border-radius: 10px;
+$input-radius: 5px;
+$component-background: radial-gradient(circle, rgba(157,109,72,0.5816701680672269) 8%, rgba(255,164,0,1) 100%);
+// $component-background: rgb(241, 166, 53);
 
-$link: #3F8EB8;
-$heading-color: #373936;
+$link: #6bdcff;
+$info: #6bdcff;
 
-$form-width: 50%;
+$heading-color: #ffffff;
+
+$form-width: 30%;
 
 //Buttons
-$submit: #51BF35;
+$submit: #3bbe1a;
