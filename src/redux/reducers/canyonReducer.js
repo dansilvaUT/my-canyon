@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const initialState = {
-    canyons: []
+    canyons: [],
 }
 
 const GET_CANYONS = 'GET_CANYONS';

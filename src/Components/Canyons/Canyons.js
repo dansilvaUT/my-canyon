@@ -1,36 +1,43 @@
 import { Component } from 'react';
 import Header from '../../Components/Header/Header';
-import { Switch, Route, Link } from 'react-router-dom';
-import AddCanyon from '../AddCanyon/AddCanyon';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCanyons } from '../../redux/reducers/canyonReducer';
+import Search from '../Canyons/Search/Search';
+import Add from '../Canyons/AddButton/Add';
 
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 import './canyons.scss';
+
 class Canyons extends Component {
 
+    constructor() {
+        super();
+        this.state = {
+            inputField: ''
+        }
+    }
     componentDidMount() {
         this.props.getCanyons();
     }
 
-
     render() {
+
         const { canyons } = this.props;
         return (
             <section className='canyons-container'>
                 <Header />
-
-                <Link to='/canyons/add'>
-                    <button>Add Canyon</button>
-                </Link>
-                <Switch>
-                    <Route path='/canyons/add' component={AddCanyon} />
-                </Switch>
                 <section className='canyons'>
-                    {canyons?.map(canyon => (
+                    <Container className='search search-form-canyons'>
+                        <Search onChange={e => this.setState({ inputField: e.target.value })} placeholder='Search for a Canyon' />
+                        <Add />
+                    </Container>
+                    {canyons?.filter(canyon => (
+                        canyon.canyon_name.toLowerCase().includes(this.state.inputField.toLowerCase())
+                    )).map(canyon => (
                         <Link key={canyon.canyon_id} to={`/canyon/${canyon.canyon_id}`} className='canyon-link'>
                             <Card className='canyon-card' key={canyon.canyon_id}>
                                 <CardContent>
@@ -44,11 +51,8 @@ class Canyons extends Component {
                                         Rating: {canyon.canyon_rating}
                                     </Typography>
                                 </CardContent>
-                                <CardActions>
-                                </CardActions>
                             </Card>
                         </Link>
-
                     ))}
                 </section>
 

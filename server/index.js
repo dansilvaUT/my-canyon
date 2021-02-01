@@ -46,5 +46,6 @@ app.get('/api/comments/:id', commentCtlr.getComments);
 app.post('/api/comments/:id', commentCtlr.addComment);
 app.delete('/api/comments', commentCtlr.deleteComment);
 app.put('/api/comments', commentCtlr.editComment);
+
 //Listen for changes on our server
 app.listen(SERVER_PORT, console.log(`MyCanyon listening on ${SERVER_PORT}`));
