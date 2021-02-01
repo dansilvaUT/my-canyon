@@ -13,13 +13,13 @@ module.exports = {
     getCanyon: async (req, res) => {
         const { id } = req.params;
         const db = req.app.get('db');
-        
+
         const result = await db.canyons.get_canyon({ id })
         const canyon = result[0];
         res.status(200).send(canyon);
     },
 
-    addCanyon: (req, res) => {
+    addCanyon: async (req, res) => {
         const {
             canyon_name,
             canyon_description,
@@ -35,7 +35,7 @@ module.exports = {
 
         //TODO add query to check if canyon already exists
         //If user is logged in
-        db.canyons.add_canyon({
+       await db.canyons.add_canyon({
             canyon_name,
             canyon_description,
             canyon_pic,
@@ -47,6 +47,7 @@ module.exports = {
         })
             .then(() => res.sendStatus(200))
             .catch(err => console.log(`Error: ${err.message}`));
+            console.log('Hit', canyon_name)
     },
 
     deleteCanyon: (req, res) => {

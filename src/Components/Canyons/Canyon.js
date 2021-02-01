@@ -2,6 +2,7 @@ import { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import axios from 'axios';
 import Comment from '../../Components/Comments/Comment';
+import './canyon.scss';
 
 class Canyon extends Component {
     constructor() {

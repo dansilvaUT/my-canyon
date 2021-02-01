@@ -2,6 +2,15 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { getComments } from '../../redux/reducers/commentReducer';
 
+import Paper from '@material-ui/core/Paper';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import Button from '@material-ui/core/Button';
+import TableRow from '@material-ui/core/TableRow';
+
 class Comment extends Component {
 
     componentDidMount() {
@@ -10,11 +19,33 @@ class Comment extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <>
                 {this.props.comments?.map(comment => (
                     <p key={comment.comment_id}>{comment.user_comment}</p>
                 ))}
+                <TableContainer component={Paper}>
+                    <Table aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>User</TableCell>
+                                <TableCell>Comment</TableCell>
+                                <TableCell><Button variant="contained" color="primary">Add a Comment</Button></TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {this.props.comments?.map((comment) => (
+                                <TableRow key={comment.comment_id}>
+                                    <TableCell component="th" scope="row">
+                                        {comment.username}
+                                    </TableCell>
+                                    <TableCell>{comment.user_comment}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
             </>
         );
     }
