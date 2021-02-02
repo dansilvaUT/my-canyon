@@ -3,7 +3,7 @@ $form-background: #222020d0;
 $border-radius: 10px;
 $input-radius: 5px;
 $component-background: radial-gradient(circle, rgba(157,109,72,0.5816701680672269) 8%, rgba(255,164,0,1) 100%);
-// $component-background: rgb(241, 166, 53);
+$heading-background: rgb(240, 196, 51);
 
 $link: #6bdcff;
 $info: #6bdcff;
@@ -14,3 +14,7 @@ $form-width: 30%;
 
 //Buttons
 $submit: #3bbe1a;
+
+.link:active {
+    color: $submit;
+}
