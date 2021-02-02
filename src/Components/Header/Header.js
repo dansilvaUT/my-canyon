@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import { getUser } from '../../redux/reducers/userReducer';
 import axios from 'axios';
+import Typography from '@material-ui/core/Typography';
+import './header.scss';
+
 const Header = (props) => {
 
     //Keep user information on state througout the session on client side.
@@ -12,13 +15,15 @@ const Header = (props) => {
     });
 
     return (
-        <header>
-            <h1>My Canyon</h1>
-            <nav>
-                <Link to='/canyons'>Canyons</Link>
-                <Link to='/profile'>Profile</Link>
-                <Link to='/canyoneers'>Canyoneers</Link>
-                <h4>Welcome {props.username}</h4>
+        <header className='header-container'>
+            <Typography variant="h3" component="h2">
+                My Canyon
+            </Typography>
+            <nav className='navbar'>
+                <Link className='link nav-item' to='/canyons'>Canyons</Link>
+                <Link className='link nav-item' to='/profile'>Profile</Link>
+                <Link className='link nav-item' to='/canyoneers'>Canyoneers</Link>
+                {/* <h4>Welcome {props.username}</h4> */}
             </nav>
         </header>
     );

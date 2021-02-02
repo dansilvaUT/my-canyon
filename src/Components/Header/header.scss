@@ -1,0 +1,18 @@
+@import '../base';
+
+.header-container {
+    background-color: $heading-background;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-content: center;
+    padding: 10px 20px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: $heading-color;
+    margin: 10px;
+    font-weight: bold;
+}
+
