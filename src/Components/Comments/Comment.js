@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { getComments } from '../../redux/reducers/commentReducer';
+import { Link } from 'react-router-dom';
 
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -19,19 +20,22 @@ class Comment extends Component {
     }
 
     render() {
-        console.log(this.props)
+        console.log("comment cmponent",this.props)
         return (
             <>
-                {this.props.comments?.map(comment => (
-                    <p key={comment.comment_id}>{comment.user_comment}</p>
-                ))}
                 <TableContainer component={Paper}>
                     <Table aria-label="simple table">
                         <TableHead>
                             <TableRow>
                                 <TableCell>User</TableCell>
                                 <TableCell>Comment</TableCell>
-                                <TableCell><Button variant="contained" color="primary">Add a Comment</Button></TableCell>
+                                <TableCell>
+                                    <Link to={`/addcomment/${this.props.id}`}>
+                                        <Button variant="contained" color="primary">Add a Comment</Button>
+                                    </Link>
+
+                                </TableCell>
+
                             </TableRow>
                         </TableHead>
                         <TableBody>
