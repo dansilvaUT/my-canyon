@@ -1,4 +1,5 @@
 SELECT 
+c.canyon_id,
 c.canyon_name, 
 c.canyon_description,
 c.canyon_pic,

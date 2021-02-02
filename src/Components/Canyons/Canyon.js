@@ -17,7 +17,7 @@ class Canyon extends Component {
         const { id } = this.props.match.params;
         const parsedID = parseInt(id);
 
-        axios.get(`/api/canyons/${parsedID}`)
+        axios.get(`/api/canyon/${parsedID}`)
             .then(canyon => {
                 this.setState({ canyon: canyon.data })
             })

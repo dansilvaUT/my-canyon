@@ -35,7 +35,7 @@ app.get('/api/auth/users', authCtlr.getUsers);
 
 //CANYON(POSTS) ENDPOINTS
 app.get('/api/canyons', canyonCtlr.getCanyons);
-app.get('/api/canyons/:id', canyonCtlr.getCanyon);
+app.get('/api/canyon/:id', canyonCtlr.getCanyon);
 app.post('/api/canyons', canyonCtlr.addCanyon);
 app.delete('/api/canyons/:id', canyonCtlr.deleteCanyon);
 app.put('/api/canyons/:id', canyonCtlr.editCanyon);

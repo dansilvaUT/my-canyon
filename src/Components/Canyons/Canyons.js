@@ -25,7 +25,6 @@ class Canyons extends Component {
     }
 
     render() {
-
         const { canyons } = this.props;
         return (
             <section className='canyons-container'>
