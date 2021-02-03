@@ -21,6 +21,8 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 
+import Container from '@material-ui/core/Container';
+
 class Comment extends Component {
 
     constructor() {
@@ -57,7 +59,6 @@ class Comment extends Component {
     }
 
     render() {
-        console.log("comment cmponent", this.props)
         return (
             <>
                 <TableContainer component={Paper}>
@@ -88,32 +89,33 @@ class Comment extends Component {
                                                     <DeleteIcon />
                                                 </IconButton>
                                                 {/* onClick={() => this.handleEditToggle()}  */}
-                                                {/* <Link className='link edit-route-btn' to={`/editcomment/${comment.comment_id}`}>
-                                                    
-                                                </Link> */}
+                                                <Link className='link edit-route-btn' to={`/editcomment/${comment.comment_id}`}>
+                                                    <IconButton aria-label="delete" color="primary" onClick={() => this.handleOpen()}>
+                                                        <FontAwesomeIcon icon={faEdit} />
+                                                    </IconButton>
+                                                </Link>
 
-                                                <IconButton aria-label="delete" color="primary" onClick={() => this.handleOpen()}>
-                                                    <FontAwesomeIcon icon={faEdit} />
-                                                </IconButton>
-                                                <Modal
+
+                                                {/* <Modal
                                                     aria-labelledby="transition-modal-title"
                                                     aria-describedby="transition-modal-description"
                                                     open={this.state.isOpen}
                                                     onClose={() => this.handleClose()}
-                                        
+
                                                     BackdropComponent={Backdrop}
                                                     BackdropProps={{
                                                         timeout: 500,
                                                     }}
                                                 >
                                                     <Fade in={this.state.isOpen}>
-                                                        {/* <Container className='edit-modal' fixed>
-                                                <h2 id="transition-modal-title">Transition modal</h2>
-                                                <p id="transition-modal-description">react-transition-group animates me.</p>
-                                            </Container> */}
+                                                        <Container className='edit-modal' fixed>
+                                                            <h2 id="transition-modal-title">Transition modal</h2>
+                                                            <p id="transition-modal-description">react-transition-group animates me.</p>
+                                                        </Container>
+
                                                         <EditComment comment_id={comment.comment_id} />
                                                     </Fade>
-                                                </Modal>
+                                                </Modal> */}
                                             </TableCell>
 
                                         ) : null}

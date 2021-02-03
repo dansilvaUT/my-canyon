@@ -46,13 +46,13 @@ module.exports = {
     },
 
     editComment: (req, res) => {
-        const { comment, comment_id } = req.body;
-        const { id } = req.params;
+        const { comment } = req.body;
+        const { id:comment_id } = req.params;
         req.app.get('db').comments.edit_comment({ comment_id, comment })
             .then(() => res.sendStatus(200))
             .catch(err => {
                 res.status(500).send(err);
-                console.log(`Error: ${err.message}`);
+                console.log(`Controller Error: ${err.message}`);
             });
     }
 }
