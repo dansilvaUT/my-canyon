@@ -32,10 +32,12 @@ app.post('/api/auth/login', authCtlr.login);
 app.post('/api/auth/logout', authCtlr.logout);
 app.get('/api/auth/me', authCtlr.getUser);
 app.get('/api/auth/users', authCtlr.getUsers);
+app.put('/api/edit/:id', authCtlr.addDescription);
 
 //CANYON(POSTS) ENDPOINTS
 app.get('/api/canyons', canyonCtlr.getCanyons);
 app.get('/api/canyon/:id', canyonCtlr.getCanyon);
+app.get('/api/usercanyons/:id',canyonCtlr.getCanyonsByUserId);
 app.post('/api/canyons', canyonCtlr.addCanyon);
 app.delete('/api/canyons/:id', canyonCtlr.deleteCanyon);
 app.put('/api/canyon/:id', canyonCtlr.editCanyon);

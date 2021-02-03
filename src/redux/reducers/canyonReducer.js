@@ -2,11 +2,13 @@ import axios from 'axios';
 
 const initialState = {
     canyons: [],
-    canyon: {}
+    canyon: {},
+    userCanyons: []
 }
 
 const GET_CANYONS = 'GET_CANYONS';
 const GET_CANYON = 'GET_CANYON';
+const GET_USER_CANYONS = 'GET_USER_CANYONS';
 
 export function getCanyons() {
     const canyons = axios.get('/api/canyons');
@@ -24,6 +26,14 @@ export function getCanyon(id) {
     }
 }
 
+export function getCanyonsByUserId(id) {
+    const userCanyons = axios.get(`/api/usercanyons/${id}`);
+    return {
+        type: GET_USER_CANYONS,
+        payload: userCanyons
+    }
+}
+
 export default function canyonReducer(state = initialState, action) {
     const { type, payload } = action;
     switch (type) {
@@ -38,6 +48,12 @@ export default function canyonReducer(state = initialState, action) {
         case GET_CANYON + '_FULFILLED':
             return { ...state, canyon: payload };
         case GET_CANYON + '_REJECTED':
+            return state;
+        case GET_USER_CANYONS + '_PENDING':
+            return state;
+        case GET_USER_CANYONS + '_FULFILLED':
+            return { ...state, userCanyons: payload };
+        case GET_USER_CANYONS + '_REJECTED':
             return state;
         default:
             return state;
