@@ -7,7 +7,8 @@ c.canyon_rating,
 c.canyon_city,
 c.canyon_state,
 c.date_created,
-u.username
+u.username,
+c.canyon_owner
 FROM
 canyons c
 JOIN canyon_users u ON u.user_id = c.canyon_owner

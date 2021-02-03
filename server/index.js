@@ -38,14 +38,15 @@ app.get('/api/canyons', canyonCtlr.getCanyons);
 app.get('/api/canyon/:id', canyonCtlr.getCanyon);
 app.post('/api/canyons', canyonCtlr.addCanyon);
 app.delete('/api/canyons/:id', canyonCtlr.deleteCanyon);
-app.put('/api/canyons/:id', canyonCtlr.editCanyon);
+app.put('/api/canyon/:id', canyonCtlr.editCanyon);
 
 
 //EDIT COMMENTS ENDPOINTS
 app.get('/api/comments/:id', commentCtlr.getComments);
 app.post('/api/comments/:id', commentCtlr.addComment);
-app.delete('/api/comments', commentCtlr.deleteComment);
-app.put('/api/comments', commentCtlr.editComment);
+app.delete('/api/comment/:id', commentCtlr.deleteComment);
+app.get('/api/comment/:id', commentCtlr.getComment);
+app.put('/api/comment/:id', commentCtlr.editComment);
 
 //Listen for changes on our server
 app.listen(SERVER_PORT, console.log(`MyCanyon listening on ${SERVER_PORT}`));
