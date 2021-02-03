@@ -35,7 +35,7 @@ module.exports = {
 
         //TODO add query to check if canyon already exists
         //If user is logged in
-       await db.canyons.add_canyon({
+        await db.canyons.add_canyon({
             canyon_name,
             canyon_description,
             canyon_pic,
@@ -47,13 +47,14 @@ module.exports = {
         })
             .then(() => res.sendStatus(200))
             .catch(err => console.log(`Error: ${err.message}`));
-            console.log('Hit', canyon_name)
+        console.log('Hit', canyon_name)
     },
 
     deleteCanyon: (req, res) => {
         const { id } = req.params;
         req.app.get('db').canyons.delete_canyon({ id })
-            .then(() => res.sendStatus(200));
+            .then(() => res.sendStatus(200))
+            .catch(err => console.log(`Error: ${err.message}`));
     },
 
     editCanyon: async (req, res) => {

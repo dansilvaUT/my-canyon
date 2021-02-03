@@ -6,6 +6,9 @@ import Canyoneers from './Components/Canyoneers/Canyoneers';
 import Canyon from './Components/Canyons/Canyon';
 import AddCanyon from './Components/Canyons/AddCanyon/AddCanyon';
 import AddComment from './Components/Comments/AddComment/AddComment';
+import EditCanyon from './Components/Canyons/EditCanyon/EditCanyon';
+import EditComment from './Components/Comments/EditComment/EditComment';
+
 export default (
     <Switch>
         <Route exact path='/' component={Login} />
@@ -15,5 +18,7 @@ export default (
         <Route path='/canyon/:id' component={Canyon} />
         <Route path='/add' component={AddCanyon} />
         <Route path='/addcomment/:id' component={AddComment} />
+        <Route path='/editcanyon/:id' component={EditCanyon} />
+        <Route path='/editcomment/:id' component={EditComment} />
     </Switch>
 );

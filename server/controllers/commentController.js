@@ -11,8 +11,12 @@ module.exports = {
     },
 
     //MIGHT NOT NEED THIS BUT WILL KEEP IT HERE JUST IN CASE LATER ON
-    getComment: (req, res) => {
+    getComment: async (req, res) => {
+        const { id } = req.params;
+        const db = req.app.get('db');
+        const [comment] = await db.comments.get_comment({ comment_id: id });
 
+        res.status(200).send(comment);
     },
 
     addComment: async (req, res) => {
@@ -30,10 +34,11 @@ module.exports = {
             });
     },
 
-    deleteComment: (req, res) => {
-        const { comment_id } = req.body;
-        req.app.get('db').comments.delete_comment({ comment_id })
-            .then(() => res.sendStatus(200))
+    deleteComment: async (req, res) => {
+        const { id } = req.params;
+
+        await req.app.get('db').comments.delete_comment({ comment_id: id })
+            .then(() => { res.sendStatus(200); })
             .catch(err => {
                 res.status(500).send(err);
                 console.log(`Error: ${err.message}`);
@@ -41,12 +46,13 @@ module.exports = {
     },
 
     editComment: (req, res) => {
-        const { comment_id, comment } = req.body;
+        const { comment } = req.body;
+        const { id:comment_id } = req.params;
         req.app.get('db').comments.edit_comment({ comment_id, comment })
             .then(() => res.sendStatus(200))
             .catch(err => {
                 res.status(500).send(err);
-                console.log(`Error: ${err.message}`);
+                console.log(`Controller Error: ${err.message}`);
             });
     }
 }
