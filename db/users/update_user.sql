@@ -1,5 +1,8 @@
 UPDATE canyon_users
-SET username = ${username}
-WHERE user_id = ${id};
+SET about = ${description}
+WHERE user_id = ${id}
 
-RETURNING username, email, profile_pic;
+-- SELECT username, email, profile_pic 
+-- FROM canyon_users 
+-- WHERE user_id = ${id};
+RETURNING username, profile_pic, about;

@@ -65,5 +65,15 @@ module.exports = {
             return res.status(204).send(`No users found`);
         }
         res.status(200).send(users);
+    },
+
+    addDescription: async (req, res) => {
+        const { id } = req.params;
+        const { description } = req.body;
+        const db = req.app.get('db');
+
+        await db.users.update_user({ id, description })
+            .then(() => res.sendStatus(200))
+            .catch(err => console.log(`Controller Error: ${err.message}`));
     }
 }

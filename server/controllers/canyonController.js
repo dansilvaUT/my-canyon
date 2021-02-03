@@ -19,6 +19,19 @@ module.exports = {
         res.status(200).send(canyon);
     },
 
+    getCanyonsByUserId: async (req, res) => {
+        const { id } = req.params;
+        const db = req.app.get('db');
+
+        const canyons = await db.canyons.get_canyons_by_user({ user_id: id });
+
+        if (!canyons[0]) {
+            return res.status(404).send(`No Canyons to Display`);
+        }
+
+        res.status(200).send(canyons);
+    },
+
     addCanyon: async (req, res) => {
         const {
             canyon_name,
