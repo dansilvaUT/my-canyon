@@ -18,11 +18,9 @@
 }
 
 .canyon-owner-details {
-    background-color: black;
     width: 50vw;
     margin: 0 auto;
     padding: 5px;
-    color: white;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -36,6 +34,16 @@
 
 .edit-canyon-btn {
     background-color: $edit!important;
+    color: white!important;
+}
+
+.canyon-description {
+    background: rgba(161, 190, 233, 0.349);
+    width: 50%;
+    padding: 3px;
+    margin: 0 auto;
+    text-align: initial;
+   
 }
 
 @media (max-width: 1240px){
@@ -53,5 +61,13 @@
     .canyon-owner,
     .canyon-rating {
         margin: 5px;
+    }
+}
+
+@media (max-width: 900px){
+    .canyon-img {
+        width: 350px;
+        height: 350px;
+        object-fit: cover;
     }
 }

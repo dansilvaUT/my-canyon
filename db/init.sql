@@ -25,5 +25,6 @@ CREATE TABLE IF NOT EXISTS comments (
     comment_id SERIAL PRIMARY KEY,
     user_comment TEXT NOT NULL,
     canyon_id INTEGER  REFERENCES canyons(canyon_id),
-    comment_owner INTEGER REFERENCES canyon_users(user_id)
+    comment_owner INTEGER REFERENCES canyon_users(user_id),
+    date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
