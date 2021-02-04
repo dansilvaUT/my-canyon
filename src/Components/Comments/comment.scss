@@ -1,5 +1,48 @@
-.edit-modal {
-    text-align: center;
+@import '../base';
+
+.add-comment {
+    background-color: $link!important;
+}
+
+.comments-container {
+    margin-top: 10px;
+    background-color: rgb(110, 109, 114);
+    width: 60vw!important;
+    height: 20vh;
+    overflow-y: auto!important;
+    // display: flex!important;
+    // justify-content: space-evenly;
+    // flex-direction: column;
+    // align-items: center;
+}
+
+.mapped-comments {
+    display: flex!important;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+
+.comments-test {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px;
+}
+
+.comment-pic {
     background-color: white;
-    padding: 20px;
+}
+
+.comment-owner {
+    font-weight: bold;
+    color: white;
+    margin: 0 10px;
+}
+
+.user-comment {
+    background-color: white;
+    padding: 10px;
+    border-radius: 0 50px 50px 50px;
 }

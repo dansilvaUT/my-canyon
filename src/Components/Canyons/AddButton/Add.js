@@ -1,11 +1,12 @@
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import './add.scss';
 
-const Add = props => {
+const Add = () => {
     return (
         <>
-            <Link to='/add'>
-                <Button variant="contained" color="primary">Add a Canyon</Button>
+            <Link class="link" to='/add'>
+                <Button className='add-canyon'variant="contained">Add a Canyon</Button>
             </Link>
         </>
     );

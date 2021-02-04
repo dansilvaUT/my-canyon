@@ -1,0 +1,15 @@
+@import '../../base';
+
+.search-field-container {
+    width: 70%;
+}
+
+.search-field{
+    width: 80%;
+}
+
+@media(max-width: 540px){
+    .search-field-container {
+        margin-bottom: 10px;
+    }
+}
