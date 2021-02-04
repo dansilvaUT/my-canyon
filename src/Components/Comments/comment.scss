@@ -10,10 +10,6 @@
     width: 60vw!important;
     height: 20vh;
     overflow-y: auto!important;
-    // display: flex!important;
-    // justify-content: space-evenly;
-    // flex-direction: column;
-    // align-items: center;
 }
 
 .mapped-comments {
@@ -45,4 +41,10 @@
     background-color: white;
     padding: 10px;
     border-radius: 0 50px 50px 50px;
+    text-align: initial;
+}
+
+.comment-timestamp {
+    font-size: .7rem;
+    color: grey;
 }

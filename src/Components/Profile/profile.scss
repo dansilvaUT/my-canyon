@@ -1,5 +1,38 @@
+@import '../base';
+
+.profile-container {
+    background: $component-background;
+    height: 155vh;
+    padding: 15px;
+}
+
+.user-container {
+    display: flex;
+    justify-content: space-around;
+    width: 90vw;
+    margin: 0 auto;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    padding: 20px;
+}
+
 .profile-pic {
     width: 200px;
     height: 200px;
+    object-fit: contain;
     border-radius: 100%;
+}
+
+.profile-description {
+    display: flex;
+    align-items: center;
+}
+
+.user-description {
+    text-align: initial;
+    font-size: 1.3rem;
 }

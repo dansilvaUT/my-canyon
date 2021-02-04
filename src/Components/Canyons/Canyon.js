@@ -69,10 +69,10 @@ class Canyon extends Component {
                                             onClick={() => this.deleteCanyon(this.state.canyon.canyon_id)}
                                         >
                                             Delete
-                            </Button>
+                                        </Button>
                                         <Link className="link" to={`/editcanyon/${canyon_id}`}>
                                             <Button
-                                            className="edit-canyon-btn"
+                                                className="edit-canyon-btn"
                                                 variant="contained"
                                                 startIcon={<FontAwesomeIcon icon={faEdit} />}
                                             >
@@ -86,7 +86,7 @@ class Canyon extends Component {
                         </section>
 
 
-                        <article className="canyon-description">{this.state.canyon.canyon_description}</article>
+                        <article className="canyon-description">"{this.state.canyon.canyon_description}"</article>
                         <h1>Comments</h1>
                         <Comment id={parsedID} />
                     </Container>

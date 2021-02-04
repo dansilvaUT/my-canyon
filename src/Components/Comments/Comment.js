@@ -11,6 +11,7 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import moment from 'moment';
 import './comment.scss'
 class Comment extends Component {
 
@@ -59,8 +60,15 @@ class Comment extends Component {
                         {this.props.comments?.map(comment => (
                             <Box key={comment.comment_id} className="comments-test">
                                 <Avatar className="comment-pic" alt={comment.username} src={comment.profile_pic} />
-                                <span className="comment-owner">{comment.username}: </span>
-                                <article className="user-comment">{comment.user_comment}</article>
+                                <span className="comment-owner">@{comment.username}: </span>
+                                <section className='comment-details'>
+                                    <article className="user-comment">
+                                        {comment.user_comment}
+                                        <span className="comment-timestamp">
+                                            | {moment(comment.date_added).format("MMM Do YY")}
+                                        </span>
+                                    </article>
+                                </section>
                                 {comment.user_id === this.props.userID
                                     ?
                                     (<>

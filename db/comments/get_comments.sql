@@ -1,6 +1,7 @@
 SELECT 
 cm.comment_id,
 cm.user_comment,
+cm.date_added,
 u.username,
 u.profile_pic,
 canyons.canyon_name,
