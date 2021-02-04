@@ -63,7 +63,7 @@ class Login extends Component {
                                     label='Email'
                                     onChange={e => this.handleInputChange(e)}
                                     variant='filled'
-                                    className='input input-login fade-in'
+                                    className='input input-login fade-in fade-out'
                                 />
                             </>
                         )
@@ -95,7 +95,7 @@ class Login extends Component {
                                     type='password'
                                     onChange={e => this.handleInputChange(e)}
                                     variant='filled'
-                                    className='input input-login fade-in'
+                                    className='input input-login fade-in fade-out'
                                 />
                                 <Button className='btn sign-up-btn' variant="outlined" onClick={() => this.hanldeSignUp()}>Sign Up</Button>
                                 <p className='toggle-queue'>Have an account? <span className='toggle-span' onClick={() => this.toggleView()}>Login here</span></p>

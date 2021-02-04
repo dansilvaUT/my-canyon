@@ -3,26 +3,15 @@ import { connect } from 'react-redux';
 import { getComments } from '../../redux/reducers/commentReducer';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
+import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import TableRow from '@material-ui/core/TableRow';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
-import EditComment from './EditComment/EditComment';
-
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-
-import Container from '@material-ui/core/Container';
-
+import './comment.scss'
 class Comment extends Component {
 
     constructor() {
@@ -59,72 +48,37 @@ class Comment extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <>
-                <TableContainer component={Paper}>
-                    <Table aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>User</TableCell>
-                                <TableCell>Comment</TableCell>
-                                <TableCell>
-                                    <Link className='link add-canyon' to={`/addcomment/${this.props.id}`}>
-                                        <Button variant="contained" color="primary">Add a Comment</Button>
-                                    </Link>
-                                </TableCell>
+                <Link className='link add-comment-link' to={`/addcomment/${this.props.id}`}>
+                    <Button variant="contained" className="add-comment">Add a Comment</Button>
+                </Link>
+                <Container className="comments-container" fixed>
+                    <Container className="mapped-comments">
+                        {this.props.comments?.map(comment => (
+                            <Box key={comment.comment_id} className="comments-test">
+                                <Avatar className="comment-pic" alt={comment.username} src={comment.profile_pic} />
+                                <span className="comment-owner">{comment.username}: </span>
+                                <article className="user-comment">{comment.user_comment}</article>
+                                {comment.user_id === this.props.userID
+                                    ?
+                                    (<>
+                                        <IconButton aria-label="delete" color="secondary" onClick={() => this.deleteComment(comment.comment_id)}>
+                                            <DeleteIcon />
+                                        </IconButton>
+                                        <Link className='link edit-route-btn' to={`/editcomment/${comment.comment_id}`}>
+                                            <IconButton aria-label="delete" color="primary" onClick={() => this.handleOpen()}>
+                                                <FontAwesomeIcon icon={faEdit} />
+                                            </IconButton>
+                                        </Link>
+                                    </>
+                                    ) : null}
+                            </Box>
+                        ))}
+                    </Container>
 
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {this.props.comments?.map((comment) => (
-                                <TableRow key={comment.comment_id}>
-                                    <TableCell component="th" scope="row">
-                                        {comment.username}
-                                    </TableCell>
-                                    <TableCell>{comment.user_comment}</TableCell>
-                                    {comment.user_id === this.props.userID
-                                        ? (
-                                            <TableCell className='comment-owner-btn'>
-                                                <IconButton aria-label="delete" color="secondary" onClick={() => this.deleteComment(comment.comment_id)}>
-                                                    <DeleteIcon />
-                                                </IconButton>
-                                                {/* onClick={() => this.handleEditToggle()}  */}
-                                                <Link className='link edit-route-btn' to={`/editcomment/${comment.comment_id}`}>
-                                                    <IconButton aria-label="delete" color="primary" onClick={() => this.handleOpen()}>
-                                                        <FontAwesomeIcon icon={faEdit} />
-                                                    </IconButton>
-                                                </Link>
-
-
-                                                {/* <Modal
-                                                    aria-labelledby="transition-modal-title"
-                                                    aria-describedby="transition-modal-description"
-                                                    open={this.state.isOpen}
-                                                    onClose={() => this.handleClose()}
-
-                                                    BackdropComponent={Backdrop}
-                                                    BackdropProps={{
-                                                        timeout: 500,
-                                                    }}
-                                                >
-                                                    <Fade in={this.state.isOpen}>
-                                                        <Container className='edit-modal' fixed>
-                                                            <h2 id="transition-modal-title">Transition modal</h2>
-                                                            <p id="transition-modal-description">react-transition-group animates me.</p>
-                                                        </Container>
-
-                                                        <EditComment comment_id={comment.comment_id} />
-                                                    </Fade>
-                                                </Modal> */}
-                                            </TableCell>
-
-                                        ) : null}
-
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+                </Container>
             </>
         );
     }

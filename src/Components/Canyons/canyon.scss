@@ -1,4 +1,57 @@
-img {
-    width: 200px;
-    height: 200px;
+@import '../base';
+
+.canyon-container {
+    background: $component-background;
+    padding: 15px 0;
+}
+
+.canyon-content {
+    background-color: rgb(255, 255, 255);
+    border-radius: $border-radius;
+    padding: 10px;
+}
+
+.canyon-img {
+    width: 550px;
+    height: 550px;
+    object-fit: cover;
+}
+
+.canyon-owner-details {
+    background-color: black;
+    width: 50vw;
+    margin: 0 auto;
+    padding: 5px;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-weight: bold;
+}
+
+.delete-canyon-btn,
+.edit-canyon-btn {
+    text-transform: capitalize!important;
+}
+
+.edit-canyon-btn {
+    background-color: $edit!important;
+}
+
+@media (max-width: 1240px){
+    .canyon-owner-details {
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .delete-canyon-btn {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .edit-canyon-btn,
+    .canyon-owner,
+    .canyon-rating {
+        margin: 5px;
+    }
 }

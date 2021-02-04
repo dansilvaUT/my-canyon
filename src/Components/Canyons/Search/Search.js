@@ -1,14 +1,15 @@
 import TextField from '@material-ui/core/TextField';
-import Container from '@material-ui/core/Container'
+import './search.scss';
 
 const Search = props => {
     return (
-        <Container>
+        <section className="search-field-container">
             <TextField
+                className="search-field"
                 label={props.placeholder}
                 onChange={props.onChange}
             />
-        </Container>
+        </section>
     );
 }
 

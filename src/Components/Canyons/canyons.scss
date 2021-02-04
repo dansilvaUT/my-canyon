@@ -2,21 +2,27 @@
 
 
 .canyons-container {
-    background: $component-background;
     height: 100vh;
+    background-color: rgb(255, 255, 255);
+    border-radius: $border-radius;
+    margin: 10px 0;
+}
+
+.search-form-canyons {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .canyons {
-    background-color: rgb(255, 255, 255);
-    width: 80vw;
     height: 70vh;
     overflow-y: auto;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     margin: 0 auto;
-    padding: 15px;
-    border-radius: $border-radius;
+    padding: 20px 15px;
 }
 
 .canyon-link {
@@ -42,4 +48,15 @@
     height: 150px;
     width: 150px;
     border-radius: 100%;
+    border: 2px solid $background;
+}
+
+.canyon-name {
+    text-transform: capitalize;
+}
+
+@media (max-width: 540px){
+    .search-form-canyons {
+        flex-direction: column;
+    }
 }

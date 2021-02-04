@@ -14,6 +14,10 @@ $form-width: 30%;
 
 //Buttons
 $submit: #3bbe1a;
+$edit: rgb(248, 216, 112);
+.link {
+    text-decoration: none;
+}
 
 .link:active {
     color: $submit;

@@ -9,6 +9,15 @@
     padding: 10px 20px;
 }
 
+.dropdown {
+    display: none;
+    font-size: 30px;
+}
+
+.mobile-navbar {
+    display: none;
+}
+
 .nav-item {
     text-decoration: none;
     color: $heading-color;
@@ -16,3 +25,39 @@
     font-weight: bold;
 }
 
+@media(max-width: 650px){
+    .navbar {
+        display: none;
+    }
+
+    .dropdown {
+        display: initial;
+        cursor: pointer;
+    }
+
+    .mobile-navbar {
+        display: flex;
+        flex-direction: column;
+        background-color: $heading-background;
+        border-radius: 15px;
+        position: fixed;
+        right: 0;
+        top: 70px;
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn ease-in 1;
+    animation-fill-mode: forwards;
+    animation-duration: 300ms;
+  }
+
+  @keyframes fadeIn {
+     from {
+        opacity: 0;
+     }
+     to {
+        opacity: 1;
+     }
+  }

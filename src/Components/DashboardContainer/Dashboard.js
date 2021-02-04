@@ -1,11 +1,17 @@
 import Header from '../../Components/Header/Header';
 import Canyons from '../../Components/Canyons/Canyons';
-
-const DashboardContainer = props =>{
-    return(
+import Typography from '@material-ui/core/Typography';
+import './dashboard.scss';
+const DashboardContainer = props => {
+    return (
         <>
-            <Header/>
-            <Canyons/>
+            <Header />
+            <section className="dashboard">
+                <Typography variant="h2" className='dashboard-header'>
+                    Browse Canyons
+            </Typography>
+                <Canyons />
+            </section>
         </>
     )
 }
