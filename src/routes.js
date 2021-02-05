@@ -10,6 +10,8 @@ import EditCanyon from './Components/Canyons/EditCanyon/EditCanyon';
 import EditComment from './Components/Comments/EditComment/EditComment';
 import DashboardContainer from './Components/DashboardContainer/Dashboard';
 import Description from './Components/Profile/Description/Description';
+import Chat from './Components/Chat/Chat';
+
 export default (
     <Switch>
         <Route exact path='/' component={Login} />
@@ -23,5 +25,6 @@ export default (
         <Route path='/editcanyon/:id' component={EditCanyon} />
         <Route path='/editcomment/:id' component={EditComment} />
         <Route path='/description/:id' component={Description} />
+        <Route path='/chat/:id' component={Chat} />
     </Switch>
 );
