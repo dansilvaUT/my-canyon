@@ -1,0 +1,14 @@
+@import '../base';
+
+.chat-container {
+    background: black;
+}
+
+.messages-container {
+    background-color: rgba(160, 194, 238, 0.274);
+    height: 50vh!important;
+}
+
+.send-message-btn {
+    background: $submit!important;
+}
