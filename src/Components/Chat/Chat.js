@@ -1,12 +1,13 @@
-import { useState, useEffect, useRef, Component } from 'react';
+import { Component } from 'react';
 import Header from '../Header/Header';
 import { connect } from 'react-redux';
 import io from 'socket.io-client';
-import Container from '@material-ui/core/Container';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+
+// import Container from '@material-ui/core/Container';
+// import TextField from '@material-ui/core/TextField';
+// import Button from '@material-ui/core/Button';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 class Chat extends Component {
     constructor() {
@@ -15,8 +16,7 @@ class Chat extends Component {
         this.state = {
             message: "",
             messages: [],
-            room: "",
-            date: ""
+            room: ""
         };
     }
 
@@ -28,12 +28,6 @@ class Chat extends Component {
             this.chatStarted(messages);
         });
     }
-
-    //   updateMsg = messages => {
-    //     this.setState({
-    //       messages: messages,
-    //       message: ""
-    //     });
 
     chatStarted = messages => {
         this.setState({
@@ -83,13 +77,11 @@ class Chat extends Component {
     };
 
     sendMsg = () => {
-        let date = new Date();
 
         this.socket.emit("sendMsg", {
             room: this.state.room,
             message: this.state.message,
-            user_1: this.props.id,
-            date: date
+            user1: this.props.id
         });
     };
 

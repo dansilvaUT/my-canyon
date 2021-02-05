@@ -60,45 +60,47 @@ app.put('/api/comment/:id', commentCtlr.editComment);
 
 
 //Sockets
-io.on("connection", function (socket) {
-    socket.on("startChat", async function (data) {
-        console.log('start hit',data);
-        const { chatRoomId, viewedUserId, id } = data;
-        const db = app.get("db");
-        let room = await db.chat.check_room({ id: chatRoomId });
-        room = room[0];
-        if (!room) {
-            db.chat.create_room({
-                room_id: chatRoomId,
-                user1: id,
-                user2: viewedUserId
-            });
-            socket.join(chatRoomId);
-        } else {
-            const { id } = room;
-            let messages = await db.chat.get_all_messages({ room_id: id });
+// io.on("connection", function (socket) {
+//     socket.on("startChat", async function (data) {
+//         console.log('start hit',data);
+//         const { chatRoomId, viewedUserId, id } = data;
+//         const db = app.get("db");
+//         let room = await db.chat.check_room({ id: chatRoomId });
+//         room = room[0];
+//         if (!room) {
+//             db.chat.create_room({
+//                 id: chatRoomId,
+//                 user1: id,
+//                 user2: viewedUserId
+//             });
+//             socket.join(chatRoomId);
+//         } else {
+//             const { room_id } = room;
+//             let messages = await db.chat.get_all_messages({ room_id: room_id });
 
-            socket.join(chatRoomId);
-            io.to(chatRoomId).emit("startChat", messages);
-        }
-    });
+//             socket.join(chatRoomId);
+//             io.to(chatRoomId).emit("startChat", messages);
+//         }
+//     });
 
-    socket.on("endChat", function (chatRoomId) {
-        socket.leave(chatRoomId);
-    });
+//     socket.on("endChat", function (chatRoomId) {
+//         socket.leave(chatRoomId);
+//         socket.disconnect() ;
 
-    socket.on("sendMsg", async function (data) {
-        console.log(data);
-        const { user1, message, room} = data;
-        const db = app.get("db");
-        let messages = await db.chat.create_message({
-            room_id: room,
-            message,
-            sender_id: user1
-        });
+//     });
 
-        console.log(messages);
+//     socket.on("sendMsg", async function (data) {
+//         console.log(data);
+//         const { user1, message, room} = data;
+//         const db = app.get("db");
+//         let messages = await db.chat.create_message({
+//             room_id: room,
+//             message,
+//             sender_id: user1
+//         });
 
-        io.to(data.room).emit("sendMsg", messages);
-    });
-});
+//         console.log(messages);
+
+//         io.to(data.room).emit("sendMsg", messages);
+//     });
+// });
