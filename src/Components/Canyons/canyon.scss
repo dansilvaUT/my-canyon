@@ -11,6 +11,11 @@
     padding: 10px;
 }
 
+.heading {
+    font-family: $font-stack!important;
+    font-weight: bold!important;
+}
+
 .canyon-img {
     width: 550px;
     height: 550px;
@@ -43,6 +48,7 @@
     padding: 3px;
     margin: 0 auto;
     text-align: initial;
+    font-family: $font-article;
    
 }
 

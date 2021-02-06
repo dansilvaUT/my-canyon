@@ -7,7 +7,7 @@ const DashboardContainer = props => {
         <>
             <Header />
             <section className="dashboard">
-                <Typography variant="h2" className='dashboard-header'>
+                <Typography variant="h2" className='heading dashboard-header'>
                     Browse Canyons
             </Typography>
                 <Canyons />

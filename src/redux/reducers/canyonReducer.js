@@ -45,9 +45,9 @@ export default function canyonReducer(state = initialState, action) {
         case GET_CANYONS + '_REJECTED':
             return state;
         case GET_CANYON + '_PENDING':
-            return state;
+            return {...state, isLoading: true};
         case GET_CANYON + '_FULFILLED':
-            return { ...state, canyon: payload };
+            return { ...state, canyon: payload, isLoading: false };
         case GET_CANYON + '_REJECTED':
             return state;
         case GET_USER_CANYONS + '_PENDING':

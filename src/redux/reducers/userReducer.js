@@ -2,7 +2,8 @@ import axios from 'axios';
 
 const initialState = {
     user: {},
-    users: []
+    users: [],
+    loading: false
 }
 
 const GET_USER = 'GET_USER';
@@ -41,9 +42,9 @@ export default function userReducer(state = initialState, action) {
         case CLEAR_USER:
             return { ...state, user: payload };
         case GET_USERS + '_PENDING':
-            return state;
+            return {...state, loading: true};
         case GET_USERS + '_FULFILLED':
-            return { ...state, users: payload };
+            return { ...state, users: payload, loading: false };
         case GET_USERS + '_REJECTED':
             return state;
         default:

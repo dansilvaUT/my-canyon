@@ -20,7 +20,7 @@ class Canyons extends Component {
     render() {
 
         console.log(this.props.userCanyons);
-        const {userCanyons} = this.props;
+        const { userCanyons } = this.props;
         return (
             <>
                 <section className='canyons-container'>
@@ -35,13 +35,11 @@ class Canyons extends Component {
                             <Link key={canyon.canyon_id} to={`/canyon/${canyon.canyon_id}`} className='canyon-link'>
                                 <Card className='canyon-card' key={canyon.canyon_id}>
                                     <CardContent>
-                                        <Typography color="textSecondary" gutterBottom>
-                                            <img className='canyons-img' src={canyon.canyon_pic} alt={canyon.canyon_name} />
-                                        </Typography>
-                                        <Typography variant="h5" component="h2">
+                                        <img className='canyons-img' src={canyon.canyon_pic} alt={canyon.canyon_name} />
+                                        <Typography className='canyon-name' variant="h5" component="h2">
                                             {canyon.canyon_name}
                                         </Typography>
-                                        <Typography variant="body2" component="p">
+                                        <Typography className='card-rating' variant="body2" component="p">
                                             Rating: {canyon.canyon_rating}
                                         </Typography>
                                     </CardContent>

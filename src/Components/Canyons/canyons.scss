@@ -35,6 +35,11 @@
     box-shadow: none!important;
 }
 
+.card-rating,
+.canyon-name {
+    font-family: $font-stack!important;
+}
+
 .canyon-card:hover {
     -ms-transform: scale(1.1); /* IE 9 */
     -webkit-transform: scale(1.1); /* Safari 3-8 */

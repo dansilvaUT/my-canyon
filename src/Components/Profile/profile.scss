@@ -27,6 +27,11 @@
     border-radius: 100%;
 }
 
+.username-heading,
+.member-heading {
+    font-family: $font-stack!important;
+}
+
 .profile-description {
     display: flex;
     align-items: center;
@@ -34,5 +39,12 @@
 
 .user-description {
     text-align: initial;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    font-family: $font-article;
+    border-bottom: solid 3px #201d1d;
+    transition: border-width 0.4s linear;
+}
+  
+.user-description:hover { 
+    border-width: 6px; 
 }
