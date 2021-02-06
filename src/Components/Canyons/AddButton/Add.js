@@ -6,7 +6,7 @@ const Add = () => {
     return (
         <>
             <Link class="link" to='/add'>
-                <Button className='add-canyon'variant="contained">Add a Canyon</Button>
+                <Button className='btn add-canyon'variant="contained">Add a Canyon</Button>
             </Link>
         </>
     );

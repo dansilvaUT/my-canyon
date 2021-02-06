@@ -3,7 +3,7 @@
 
 .canyons-container {
     height: 100vh;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.705);
     border-radius: $border-radius;
     margin: 10px 0;
 }
@@ -33,6 +33,7 @@
     padding: 5px 15px;
     transition: transform .3s!important;
     box-shadow: none!important;
+    margin: 3px;
 }
 
 .card-rating,

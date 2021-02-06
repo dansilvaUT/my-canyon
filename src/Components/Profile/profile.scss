@@ -1,16 +1,19 @@
 @import '../base';
 
 .profile-container {
-    background: $component-background;
+    background: $component-background-image;
     height: 155vh;
-    padding: 15px;
+    padding: 90px 0 15px 0;
 }
 
 .user-container {
     display: flex;
     justify-content: space-around;
+    padding: 10px;
     width: 90vw;
     margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.753);
+    border-radius: $border-radius;
 }
 
 .user-info {
@@ -47,4 +50,9 @@
   
 .user-description:hover { 
     border-width: 6px; 
+}
+
+.profile-canyon-heading {
+    color: $heading-color;
+    padding: 10px 0;
 }

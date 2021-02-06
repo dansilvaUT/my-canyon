@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { getUser } from '../../redux/reducers/userReducer';
+import { getUser, clearUser } from '../../redux/reducers/userReducer';
 import axios from 'axios';
 import Typography from '@material-ui/core/Typography';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -22,6 +22,12 @@ const Header = (props) => {
         setDropdownView(!dropdownView);
     }
 
+    const logout = () => {
+        axios.get('/api/auth/logout')
+            .then(() => props.clearUser());
+    }
+
+    console.log(props)
     return (
         <header className='header-container'>
             <Typography className="header-heading" variant="h3" component="h2">
@@ -31,7 +37,13 @@ const Header = (props) => {
                 <Link className='link nav-item' to='/canyons'>Canyons</Link>
                 <Link className='link nav-item' to='/profile'>Profile</Link>
                 <Link className='link nav-item' to='/canyoneers'>Canyoneers</Link>
-                {/* <h4>Welcome {props.username}</h4> */}
+                {props.id
+                    ?
+                    (
+                        <Link className='link nav-item logout' to='/' onClick={logout}>Logout</Link>
+                    )
+                    :
+                    null}
             </nav>
             <FontAwesomeIcon className='dropdown' icon={faBars} onClick={toggleMenu} />
             {dropdownView
@@ -41,7 +53,13 @@ const Header = (props) => {
                         <Link className='link nav-item' to='/canyons'>Canyons</Link>
                         <Link className='link nav-item' to='/profile'>Profile</Link>
                         <Link className='link nav-item' to='/canyoneers'>Canyoneers</Link>
-                        {/* <h4>Welcome {props.username}</h4> */}
+                        {props.id
+                            ?
+                            (
+                                <Link className='link nav-item logout' to='/' onClick={logout}>Logout</Link>
+                            )
+                            :
+                            null}
                     </nav>
 
                 )
@@ -53,7 +71,7 @@ const Header = (props) => {
 
 const mapStateToProps = reduxState => {
     return {
-        username: reduxState.userReducer.user.username
+        id: reduxState.userReducer.user.user_id
     }
 }
-export default connect(mapStateToProps, { getUser })(Header);
+export default connect(mapStateToProps, { getUser, clearUser })(Header);

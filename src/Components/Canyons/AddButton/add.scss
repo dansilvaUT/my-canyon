@@ -1,6 +1,8 @@
 @import '../../base';
 
 .add-canyon {
-    background: $link!important;
+    background: $link;
     text-transform: capitalize!important;
+    color: $heading-color;
+    font-weight: bold!important;
 }

@@ -123,7 +123,7 @@ class Chat extends Component {
 
         console.log(this.state.messages)
         return (
-            <div>
+            <section className='chat-wrapper'>
                 <Header />
                 <Container className="chat-container" fixed>
                     <Container maxWidth="sm" className="messages-container">
@@ -149,7 +149,7 @@ class Chat extends Component {
 
                 </Container>
 
-            </div>
+            </section>
         );
     }
 }
