@@ -3,7 +3,8 @@ import axios from 'axios';
 const initialState = {
     canyons: [],
     canyon: {},
-    userCanyons: []
+    userCanyons: [],
+    isLoading: false
 }
 
 const GET_CANYONS = 'GET_CANYONS';
@@ -38,9 +39,9 @@ export default function canyonReducer(state = initialState, action) {
     const { type, payload } = action;
     switch (type) {
         case GET_CANYONS + '_PENDING':
-            return state;
+            return { ...state, isLoading: true };
         case GET_CANYONS + '_FULFILLED':
-            return { ...state, canyons: payload };
+            return { ...state, canyons: payload, isLoading: false };
         case GET_CANYONS + '_REJECTED':
             return state;
         case GET_CANYON + '_PENDING':

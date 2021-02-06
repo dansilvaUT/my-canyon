@@ -1,0 +1,32 @@
+@import '../../base';
+
+.add-canyon-wrapper {
+    width: 100%!important;
+    padding: 15px;
+}
+
+.add-canyon-container {
+    display: flex!important;
+    flex-direction: column;
+    width: 50vw!important;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: $border-radius;
+}
+
+.canyon-img-placeholder {
+    margin: 0 auto;
+    height: 350px;
+    width: 350px;
+    // object-fit: contain;
+}
+
+.submit-canyon-btn {
+    background-color: $submit!important;
+    color: white!important;
+    font-size: 1rem!important;
+}
+
+.folder-icon {
+    margin-left: 10px;
+}

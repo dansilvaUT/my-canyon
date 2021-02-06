@@ -3,8 +3,12 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { getCanyon } from '../../../redux/reducers/canyonReducer';
 import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFolderPlus } from '@fortawesome/free-solid-svg-icons';
+import './editCanyon.scss';
 
 class EditCanyon extends Component {
 
@@ -43,26 +47,34 @@ class EditCanyon extends Component {
 
     render() {
         return (
-            <Container fixed>
-                <h1>Enter a new canyon here</h1>
-                <TextField
-                    variant='filled'
-                    name='canyonPic'
-                    onChange={e => this.handleInputChange(e)}
-                    value={this.state.canyonPic}
-                />
-                <TextField
-                    id="filled-multiline-static"
-                    name='description'
-                    multiline
-                    rows={6}
-                    variant="filled"
-                    onChange={e => this.handleInputChange(e)}
-                    value={this.state.description}
+            <section className='edit-canyon-wrapper'>
+                <Container className='edit-canyon-container' fixed>
+                    <Typography variant='h2'>
+                        Submit your Edits here...
+                </Typography>
+                    <img className='current-canyon' alt='current-canyon' src={this.state.canyonPic}/>
+                    <TextField
+                        variant='filled'
+                        name='canyonPic'
+                        onChange={e => this.handleInputChange(e)}
+                        value={this.state.canyonPic}
+                    />
+                    <TextField
+                        id="filled-multiline-static"
+                        name='description'
+                        multiline
+                        rows={6}
+                        variant="filled"
+                        onChange={e => this.handleInputChange(e)}
+                        value={this.state.description}
 
-                />
-                <Button variant="contained" color="primary" onClick={() => this.editCanyon()}>Update Canyon</Button>
-            </Container>
+                    />
+                    <Button className='submit-canyon-edit' variant="contained" onClick={() => this.editCanyon()}>
+                        Update Canyon
+                    <FontAwesomeIcon className='folder-icon' icon={faFolderPlus} />
+                    </Button>
+                </Container>
+            </section>
         );
     }
 }
