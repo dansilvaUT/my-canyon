@@ -69,14 +69,14 @@ io.on("connection", function (socket) {
         room = room[0];
         if (!room) {
             db.chat.create_room({
-                room_id: chatRoomId,
+                id: chatRoomId,
                 user1: id,
                 user2: viewedUserId
             });
             socket.join(chatRoomId);
         } else {
-            const { id } = room;
-            let messages = await db.chat.get_all_messages({ room_id: id });
+            const { room_id } = room;
+            let messages = await db.chat.get_all_messages({ room_id: room_id });
 
             socket.join(chatRoomId);
             io.to(chatRoomId).emit("startChat", messages);
@@ -85,6 +85,8 @@ io.on("connection", function (socket) {
 
     socket.on("endChat", function (chatRoomId) {
         socket.leave(chatRoomId);
+        // socket.disconnect() ;
+
     });
 
     socket.on("sendMsg", async function (data) {

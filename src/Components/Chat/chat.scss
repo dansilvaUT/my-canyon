@@ -1,14 +1,76 @@
 @import '../base';
 
 .chat-container {
-    background: black;
+    background: rgba(0, 0, 0, 0.082);
+    margin-top: 10px;
+    padding: 10px;;
 }
 
 .messages-container {
-    background-color: rgba(160, 194, 238, 0.274);
-    height: 50vh!important;
+    background-color: #000000bf;
+    border-radius: $border-radius;
+    height: 50vh;
+    overflow-y: auto;
+}
+
+.messages {
+    padding: 3px;
+}
+
+.message-display-right {
+    text-align: right;
+    padding: 15px 5px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.message-display-left {
+    text-align: left;
+    padding: 15px 5px;
+    display: flex;
+}
+
+.my-message,
+.other-message {
+    padding: 10px 8px;
+    color: white;
+}
+
+.my-message {
+    
+    border-radius: 50px 50px 0 50px;
+    background-color: rgba(10, 27, 232, 0.71);
+}
+
+.other-message {
+    text-align: left;
+    border-radius: 50px 50px 50px 0;
+    background-color: rgba(59, 216, 216, 0.77);
+}
+
+.message-username {
+    color: white;
+    font-weight: bold;
+    padding: 3px;
+}
+
+.time-stamp {
+    font-size: .5rem;
+}
+
+.chat-controls {
+    margin: 0 auto;
+    align-items: center;
+    align-content: center;
+    padding: 5px;
+}
+
+.message-input {
+    width: 40%;
 }
 
 .send-message-btn {
     background: $submit!important;
+    color: white!important;
+    margin-top: 5px!important;
 }

@@ -1,22 +1,25 @@
-import { useState, useEffect, useRef, Component } from 'react';
+import { Component } from 'react';
 import Header from '../Header/Header';
 import { connect } from 'react-redux';
 import io from 'socket.io-client';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import moment from 'moment';
+
+import './chat.scss';
 
 class Chat extends Component {
     constructor() {
         super();
 
         this.state = {
-            message: "",
+            message: '',
             messages: [],
-            room: "",
-            date: ""
+            room: ''
         };
     }
 
@@ -28,12 +31,6 @@ class Chat extends Component {
             this.chatStarted(messages);
         });
     }
-
-    //   updateMsg = messages => {
-    //     this.setState({
-    //       messages: messages,
-    //       message: ""
-    //     });
 
     chatStarted = messages => {
         this.setState({
@@ -83,30 +80,75 @@ class Chat extends Component {
     };
 
     sendMsg = () => {
-        let date = new Date();
 
         this.socket.emit("sendMsg", {
             room: this.state.room,
             message: this.state.message,
-            user_1: this.props.id,
-            date: date
+            user1: this.props.id
         });
+        this.setState({ message: '' })
     };
 
     render() {
-        const messages = this.state.messages.map(obj => obj.message);
-        console.log(this.props)
+        const messages = this.state.messages.map(obj => (
+            <Box className='messages' key={obj.message_id}>
+                {this.props.id === obj.sender_id
+                    ?
+                    (
+                        <section className="message-display-right">
+                            <article className='my-message'>
+                                {obj.message}
+                                {/* <span className='time-stamp'>{moment(obj.date_sent).fromNow()}</span> */}
+                            </article>
+                            <span className='message-username'>{obj.username}</span>
+                        </section>
+
+                    )
+                    :
+                    (
+                        <section className="message-display-left">
+                            <span className='message-username'>{obj.username}</span>
+                            <article className='other-message'>
+                                {/* <span className='time-stamp'>
+                                    {moment('hour').fromNow()}
+                                </span> */}
+                                {obj.message}
+                            </article>
+                        </section>
+
+                    )
+                }
+            </Box>
+        ));
+
+        console.log(this.state.messages)
         return (
             <div>
                 <Header />
-                {messages}
-                <input
-                    value={this.state.message}
-                    onChange={e => {
-                        this.handleMessage(e.target.value);
-                    }}
-                />
-                <button onClick={this.sendMsg}>Send Message!</button>
+                <Container className="chat-container" fixed>
+                    <Container maxWidth="sm" className="messages-container">
+                        {messages}
+                    </Container>
+                    <section className='chat-controls'>
+                        <TextField
+                            name='message'
+                            label='Message'
+                            className='message-input'
+                            onChange={e => this.handleMessage(e.target.value)}
+                            value={this.state.message}
+                        />
+                        <Button
+                            onClick={this.sendMsg}
+                            className="send-message-btn"
+                            variant="contained"
+                            startIcon={<FontAwesomeIcon icon={faPaperPlane} />}
+                        >
+                            Send
+                </Button>
+                    </section>
+
+                </Container>
+
             </div>
         );
     }
