@@ -1,14 +1,19 @@
 @import '../base';
 
+.chat-wrapper {
+    background: $component-background-image;
+    height: 100vh;
+}
+
 .chat-container {
-    background: rgba(0, 0, 0, 0.082);
     margin-top: 10px;
     padding: 10px;;
 }
 
 .messages-container {
-    background-color: #000000bf;
+    background-color: #000000af;
     border-radius: $border-radius;
+    margin-top: 70px;
     height: 50vh;
     overflow-y: auto;
 }
@@ -63,6 +68,9 @@
     align-items: center;
     align-content: center;
     padding: 5px;
+    background: $container-color;
+    width: 40vw;
+    border-radius: $border-radius;
 }
 
 .message-input {
@@ -70,7 +78,8 @@
 }
 
 .send-message-btn {
-    background: $submit!important;
-    color: white!important;
+    background: $submit;
+    color: $heading-color;
     margin-top: 5px!important;
+    border-radius: $border-radius;
 }

@@ -1,16 +1,21 @@
 @import '../base';
 
 .header-container {
-    background-color: $heading-background;
+    background-color: $heading-dark;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     align-content: center;
     padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    top: 0;
 }
 
 .header-heading {
     font-family: $font-stack!important;
+    color: white!important
 }
 
 .dropdown {
@@ -38,6 +43,7 @@
     .dropdown {
         display: initial;
         cursor: pointer;
+        color: $heading-color;
     }
 
     .mobile-navbar {

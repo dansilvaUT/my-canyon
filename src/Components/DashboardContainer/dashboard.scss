@@ -1,10 +1,15 @@
 @import '../base';
 
 .dashboard {
-    background: $component-background;
+    padding-top: 70px;
+    background: url('../../images/background4.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
     height: 120vh;
 }
 
 .dashboard-header {
     padding: 20px 0;
+    color: $heading-color;
 }

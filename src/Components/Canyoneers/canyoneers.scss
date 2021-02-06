@@ -1,8 +1,13 @@
 @import '../base';
 
 .canyoneers-dashboard {
-    background: $component-background;
+    background: $component-background-image;
     height: 155vh;
+    padding-top: 90px;
+}
+
+.canyoneers-header {
+    color: $heading-color;
 }
 
 .canyoneers-container {
@@ -14,6 +19,7 @@
 .canyoneer-content {
     width: 50vw;
     margin: 10px auto!important;
+    background-color: $container-color!important;
 }
 
 .canyoneer-content {
