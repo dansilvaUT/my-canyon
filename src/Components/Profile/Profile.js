@@ -34,8 +34,8 @@ class Profile extends Component {
                                 )
                                 : <img className='profile-pic' src='https://via.placeholder.com/150/d9f2c7/808080?Text=What do you look like' alt='placeholder_here' />
                             }
-                            <Typography variant="h4">@{username}</Typography>
-                            <Typography>Member since {moment(date_added).format("MMM Do YYYY")}</Typography>
+                            <Typography className='username-heading' variant="h4">@{username}</Typography>
+                            <Typography className='member-heading'>Member since {moment(date_added).format("MMM Do YYYY")}</Typography>
                         </section>
                         <section className="profile-description">
                             {about === null
@@ -53,7 +53,7 @@ class Profile extends Component {
                     </section>
 
                     <Container className="user-canyons-placeholder" fixed>
-                        <Typography variant="h4">My Canyons</Typography>
+                        <Typography className='heading profile-canyon-heading'variant="h4">My Canyons</Typography>
                         <UserCanyon />
                     </Container>
                 </section>

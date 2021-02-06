@@ -1,15 +1,4 @@
-import { useState } from "react";
-import { css } from "@emotion/core";
-import BounceLoader from "react-spinners/BounceLoader";
-
-// Can be a string as well. Need to ensure each key-value pair ends with ;
-
-function Spinner() {
-
-
-    return (
-        <BounceLoader />
-    );
-}
+import PulseLoader from "react-spinners/PulseLoader";
+const Spinner = () => <PulseLoader color='#68e3d9' size={120} />;
 
 export default Spinner;

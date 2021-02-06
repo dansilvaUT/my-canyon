@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Architects+Daughter&display=swap');
+$font-stack: 'Architects Daughter', cursive;
+$font-article: 'Amatic SC', cursive;
+
 $background: #19136D;
 $form-background: #222020d0;
 $border-radius: 10px;
@@ -15,6 +19,15 @@ $form-width: 30%;
 //Buttons
 $submit: #3bbe1a;
 $edit: rgb(248, 216, 112);
+
+body {
+    font-family: $font-stack!important;
+}
+
+.heading {
+    font-family: $font-stack!important;
+}
+
 .link {
     text-decoration: none;
 }
