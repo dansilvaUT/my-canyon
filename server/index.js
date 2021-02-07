@@ -5,6 +5,7 @@ const express = require('express'),
     authCtlr = require('./controllers/authController'),
     canyonCtlr = require('./controllers/canyonController'),
     commentCtlr = require('./controllers/commentController'),
+    weatherCtlr = require('./controllers/weatherController'),
     socket = require('socket.io'),
     { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env,
     app = express();
@@ -58,11 +59,12 @@ app.delete('/api/comment/:id', commentCtlr.deleteComment);
 app.get('/api/comment/:id', commentCtlr.getComment);
 app.put('/api/comment/:id', commentCtlr.editComment);
 
-
+//WEATHER ENPOINT
+app.get('/api/weather', weatherCtlr.getWeather);
 //Sockets
 io.on("connection", function (socket) {
     socket.on("startChat", async function (data) {
-        console.log('start hit',data);
+        console.log('start hit', data);
         const { chatRoomId, viewedUserId, id } = data;
         const db = app.get("db");
         let room = await db.chat.check_room({ id: chatRoomId });
@@ -91,7 +93,7 @@ io.on("connection", function (socket) {
 
     socket.on("sendMsg", async function (data) {
         console.log(data);
-        const { user1, message, room} = data;
+        const { user1, message, room } = data;
         const db = app.get("db");
         let messages = await db.chat.create_message({
             room_id: room,

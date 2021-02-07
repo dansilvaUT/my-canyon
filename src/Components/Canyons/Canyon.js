@@ -17,7 +17,8 @@ class Canyon extends Component {
     constructor() {
         super();
         this.state = {
-            canyon: {}
+            canyon: {},
+            weather: []
         }
     }
 
@@ -29,6 +30,8 @@ class Canyon extends Component {
             .then(canyon => {
                 this.setState({ canyon: canyon.data })
             });
+
+            // this.getWeather();
     }
 
     deleteCanyon = (id) => {
@@ -40,11 +43,20 @@ class Canyon extends Component {
             .catch(err => console.log(`Error: ${err.message}`));
     }
 
+    getWeather = () => {
+        const zipcode = 72762;
+        axios.post('/api/weather', { zipcode })
+            .then(res => this.setState({ weather: res.data }))
+            .catch(err => console.log(`Client Error: ${err.message}`));
+    }
+
     render() {
         const { id } = this.props.match.params;
         const parsedID = parseInt(id);
         // console.log('Canyon Component', this.props);
         // console.log('react state', this.state.canyon.canyon_id)
+        console.log(this.state.canyon)
+        console.log('weather:',this.state.weather)
         const { canyon_id } = this.state.canyon;
         return (
             <>
@@ -91,6 +103,7 @@ class Canyon extends Component {
                                         )
                                         : null}
                                 </section>
+                                <button onclick={() => this.getWeather()}>click me</button>
                                 <article className="canyon-description">"{this.state.canyon.canyon_description}"</article>
                                 <h1>Comments</h1>
                                 <Comment id={parsedID} />
