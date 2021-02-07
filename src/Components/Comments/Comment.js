@@ -49,7 +49,7 @@ class Comment extends Component {
     }
 
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         return (
             <>
                 <Link className='link add-comment-link' to={`/addcomment/${this.props.id}`}>

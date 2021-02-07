@@ -17,7 +17,8 @@ class Canyon extends Component {
     constructor() {
         super();
         this.state = {
-            canyon: {}
+            canyon: {},
+            weather: []
         }
     }
 
@@ -43,7 +44,8 @@ class Canyon extends Component {
     render() {
         const { id } = this.props.match.params;
         const parsedID = parseInt(id);
-        // console.log('Canyon Component', this.props);
+        console.log('Canyon Component', this.state.weather);
+        console.log(process.env.REACT_APP_API_KEY)
         // console.log('react state', this.state.canyon.canyon_id)
         const { canyon_id } = this.state.canyon;
         return (

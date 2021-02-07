@@ -1,7 +1,8 @@
 @import '../base';
 
 .add-comment {
-    background-color: $link!important;
+    background-color: $link;
+    color: $heading-color;
 }
 
 .comments-container {

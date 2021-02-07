@@ -1,12 +1,12 @@
 @import '../base';
 
 .canyon-container {
-    background: $component-background;
-    padding: 15px 0;
+    background: $component-background-image;
+    padding: 150px 0;
 }
 
 .canyon-content {
-    background-color: rgb(255, 255, 255);
+    background-color: $container-color;
     border-radius: $border-radius;
     padding: 10px;
 }
@@ -14,6 +14,10 @@
 .heading {
     font-family: $font-stack!important;
     font-weight: bold!important;
+}
+
+.canyon-heading-name {
+    margin: 10px!important;
 }
 
 .canyon-img {
@@ -43,12 +47,14 @@
 }
 
 .canyon-description {
-    background: rgba(161, 190, 233, 0.349);
+    background: rgba(13, 35, 161, 0.726);
     width: 50%;
     padding: 3px;
     margin: 0 auto;
     text-align: initial;
     font-family: $font-article;
+    font-size: 1.5rem;
+    font-weight: bold;
    
 }
 
