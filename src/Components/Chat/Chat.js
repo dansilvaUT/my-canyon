@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
-import moment from 'moment';
 
 import './chat.scss';
 

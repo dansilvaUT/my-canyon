@@ -60,7 +60,7 @@ app.get('/api/comment/:id', commentCtlr.getComment);
 app.put('/api/comment/:id', commentCtlr.editComment);
 
 //WEATHER ENPOINT
-app.get('/api/weather', weatherCtlr.getWeather);
+app.post('/api/weather', weatherCtlr.getWeather);
 //Sockets
 io.on("connection", function (socket) {
     socket.on("startChat", async function (data) {

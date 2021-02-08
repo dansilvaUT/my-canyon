@@ -27,7 +27,7 @@ const Header = (props) => {
             .then(() => props.clearUser());
     }
 
-    console.log(props)
+    // console.log(props)
     return (
         <header className='header-container'>
             <Typography className="header-heading" variant="h3" component="h2">

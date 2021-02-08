@@ -38,8 +38,8 @@ module.exports = {
             canyon_description,
             canyon_pic,
             canyon_rating,
-            canyon_city,
-            canyon_state
+            canyon_state,
+            zipcode
         } = req.body;
         let date = new Date();
         const { user_id } = req.session.user;
@@ -53,10 +53,10 @@ module.exports = {
             canyon_description,
             canyon_pic,
             canyon_rating,
-            canyon_city,
             canyon_state,
             user_id,
-            date
+            date,
+            zipcode
         })
             .then(() => res.sendStatus(200))
             .catch(err => console.log(`Error: ${err.message}`));

@@ -3,6 +3,7 @@
 .chat-wrapper {
     background: $component-background-image;
     height: 100vh;
+    background-attachment: fixed;
 }
 
 .chat-container {
