@@ -26,7 +26,7 @@ class Canyons extends Component {
 
     render() {
         const { canyons } = this.props;
-        // console.log(this.props);
+        console.log(this.props);
         return (
             <>
                 <Container className='canyons-container'>

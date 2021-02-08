@@ -53,20 +53,23 @@ class Comment extends Component {
         return (
             <>
                 <Link className='link add-comment-link' to={`/addcomment/${this.props.id}`}>
-                    <Button variant="contained" className="add-comment">Add a Comment</Button>
+                    <Button variant="contained" className="add-comment">Comment</Button>
                 </Link>
-                <Container className="comments-container" fixed>
+                <Container className="comments-container">
                     <Container className="mapped-comments">
                         {this.props.comments?.map(comment => (
                             <Box key={comment.comment_id} className="comments-test">
-                                <Avatar className="comment-pic" alt={comment.username} src={comment.profile_pic} />
-                                <span className="comment-owner">@{comment.username}: </span>
+                                <section className='author-details' >
+                                    <Avatar className="comment-pic" alt={comment.username} src={comment.profile_pic} />
+                                    <span className="comment-owner">@{comment.username}: </span>
+                                </section>
                                 <section className='comment-details'>
                                     <article className="user-comment">
-                                        {comment.user_comment}
-                                        <span className="comment-timestamp">
-                                            | {moment(comment.date_added).format("MMM Do YY")}
+                                    <span className="comment-timestamp">
+                                            {moment(comment.date_added).format("MMM Do YY")}
                                         </span>
+                                        <p className='comment'>{comment.user_comment}</p>
+                                        
                                     </article>
                                 </section>
                                 {comment.user_id === this.props.userID

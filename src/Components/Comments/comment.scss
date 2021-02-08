@@ -3,29 +3,29 @@
 .add-comment {
     background-color: $link;
     color: $heading-color;
+    text-transform: capitalize!important;
+    font-family: $font-stack!important;
+    margin-left: 5px!important;
+    margin-bottom: 12px!important;
 }
 
 .comments-container {
     margin-top: 10px;
-    background-color: rgb(110, 109, 114);
-    width: 60vw!important;
-    height: 20vh;
+    height: 60vh;
     overflow-y: auto!important;
-}
-
-.mapped-comments {
-    display: flex!important;
-    justify-content: center;
-    flex-direction: column;
-    align-items: flex-start;
-
+    width: auto!important;
 }
 
 .comments-test {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     margin: 5px;
+}
+
+.author-details {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 3px;
+    
 }
 
 .comment-pic {
@@ -34,18 +34,24 @@
 
 .comment-owner {
     font-weight: bold;
-    color: white;
+    color: $heading-dark;;
     margin: 0 10px;
 }
 
 .user-comment {
     background-color: white;
-    padding: 10px;
-    border-radius: 0 50px 50px 50px;
+    padding: 5px;
+    border-radius: 0 10px 10px 10px;
     text-align: initial;
+}
+
+.comment {
+    margin: 0;
 }
 
 .comment-timestamp {
     font-size: .7rem;
     color: grey;
 }
+
+

@@ -20,9 +20,14 @@
     margin: 10px!important;
 }
 
+.side-by-side {
+    display:flex;
+    justify-content: space-around;
+}
+
 .canyon-img {
-    width: 550px;
-    height: 550px;
+    width: 450px;
+    height: 450px;
     object-fit: cover;
 }
 
@@ -46,22 +51,34 @@
     color: white!important;
 }
 
+.weather-info {
+    font-weight: bold;
+}
+
+.temp {
+    font-size: 1.3rem;
+}
+
 .canyon-description {
-    background: rgba(13, 35, 161, 0.726);
+    background: rgba(248, 249, 252, 0.726);
     width: 50%;
     padding: 3px;
     margin: 0 auto;
     text-align: initial;
     font-family: $font-article;
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.6rem;
+    font-weight: 700;
+    border-radius: $border-radius;
    
 }
 
+.display-comment-header {
+    display: inline;
+}
 @media (max-width: 1240px){
     .canyon-owner-details {
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-evenly;
     }
 
     .delete-canyon-btn {
@@ -81,5 +98,11 @@
         width: 350px;
         height: 350px;
         object-fit: cover;
+    }
+}
+
+@media(max-width: 790px){
+    .side-by-side {
+        flex-direction: column;
     }
 }
