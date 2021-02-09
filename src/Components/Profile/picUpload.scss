@@ -1,0 +1,15 @@
+@import '../base';
+
+.upload-zone {
+    border: none;
+    outline: none;
+}
+
+.upload-text {
+    margin: 0;
+}
+
+.upload {
+    font-size: 3rem;
+    color: $link;
+}

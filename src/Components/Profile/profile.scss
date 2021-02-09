@@ -25,10 +25,17 @@
 }
 
 .profile-pic {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
+    width: 250px;
+    height: 250px;
     border-radius: 100%;
+}
+
+.add-description-user {
+    background-color: $link;
+    color: $heading-color;
+    font-family: $font-stack!important;
+    font-weight: bold!important;
+    text-transform: capitalize!important;
 }
 
 .username-heading,

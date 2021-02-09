@@ -14,9 +14,9 @@ module.exports = {
 
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(password, salt);
-
+//https://robohash.org/${username}.png`
         let date = new Date();//TODO Need to remove the generated profile pic once S3 is set up
-        const newUser = await db.users.register({ username, email, hash, profile_pic: `https://robohash.org/${username}.png`, about: null, date });
+        const newUser = await db.users.register({ username, email, hash, profile_pic: null, about: null, date });
 
         req.session.user = newUser[0];
         res.status(201).send(req.session.user);

@@ -33,7 +33,7 @@ class Login extends Component {
         axios.post('/api/auth/login', { username, password })
             .then(res => {
                 this.props.getUser(res.data);
-                this.props.history.push('/canyons');
+                this.props.history.push('/profile');
             })
             .catch(err => console.log(`Error: ${err.message}`));
     }
