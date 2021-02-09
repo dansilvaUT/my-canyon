@@ -117,7 +117,7 @@ class Canyon extends Component {
                                         </section>
                                         <section className='weather-info'>
                                             <span className='weather-city'>{this.state.weather.name} </span>
-                                            <span className='weather-temp'>Current Temp: {temp + '\u00B0' + ' F '}</span>
+                                            <span className='weather-temp'>Current Temp: {temp + '\u00B0 F '}</span>
                                             <FontAwesomeIcon className='temp' icon={faTemperatureLow} />
                                         </section>
                                         <article className="canyon-description">"{this.state.canyon.canyon_description}"</article>

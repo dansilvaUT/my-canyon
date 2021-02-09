@@ -8,15 +8,13 @@ import UserCanyon from '../../Components/Profile/UserCanyons/UserCanyon';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
+import PicUpload from './PicUpload';
 import './profile.scss';
 
 class Profile extends Component {
-    //TODO
-    //ADD CONDITIONAL RENDERING TO DISPLAY IMAGE PLACEHODER ONCE S3 IS SET UP
 
     componentDidMount() {
-        // this.props.user.user_id
-        this.props.getCanyonsByUserId(2);
+        this.props.getCanyonsByUserId(this.props.user.user_id);
     }
 
     render() {
@@ -30,9 +28,12 @@ class Profile extends Component {
                         <section className="user-info">
                             {profile_pic
                                 ? (
-                                    <img className='profile-pic' src={profile_pic} alt={username} />
+                                    <>
+                                        <img className='profile-pic' src={profile_pic} alt={username} />
+                                    </>
                                 )
-                                : <img className='profile-pic' src='https://via.placeholder.com/150/d9f2c7/808080?Text=What do you look like' alt='placeholder_here' />
+                                : 
+                                <PicUpload />
                             }
                             <Typography className='username-heading' variant="h4">@{username}</Typography>
                             <Typography className='member-heading'>Member since {moment(date_added).format("MMM Do YYYY")}</Typography>
@@ -41,19 +42,19 @@ class Profile extends Component {
                             {about === null
                                 ? (
                                     <>
-                                        <p>Describe {username} here</p>
+                                        <p>Describe {username} here  </p>
                                         <Link className='link description-link' to={`/description/${user_id}`}>
-                                            <Button variant="filled" color="primary">Add Description</Button>
+                                            <Button variant="filled" className='add-description-user' >Add Description</Button>
                                         </Link>
-
+                                        
                                     </>
                                 )
-                                : <div className="user-description">{about} my name is mulan i did it to save my father please beleive me. The lord of the rings the reutrn of the king. There canyonReducercno be any oone other that the one who is going to break the spell otherwise we will all die. Do you understan thatn?</div>}
+                                : <div className="user-description">{about}</div>}
                         </section>
                     </section>
 
                     <Container className="user-canyons-placeholder" fixed>
-                        <Typography className='heading profile-canyon-heading'variant="h4">My Canyons</Typography>
+                        <Typography className='heading profile-canyon-heading' variant="h4">My Canyons</Typography>
                         <UserCanyon />
                     </Container>
                 </section>

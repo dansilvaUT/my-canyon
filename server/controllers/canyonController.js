@@ -60,7 +60,6 @@ module.exports = {
         })
             .then(() => res.sendStatus(200))
             .catch(err => console.log(`Error: ${err.message}`));
-        console.log('Hit', canyon_name)
     },
 
     deleteCanyon: (req, res) => {
