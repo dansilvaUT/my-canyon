@@ -46,8 +46,6 @@ module.exports = {
 
         const db = req.app.get('db');
 
-        //TODO add query to check if canyon already exists
-        //If user is logged in
         await db.canyons.add_canyon({
             canyon_name,
             canyon_description,

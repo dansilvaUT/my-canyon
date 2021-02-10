@@ -1,7 +1,6 @@
 @import '../../base';
 
 .edit-canyon-wrapper {
-    height: 80vh;
     padding-top: 15px;
 }
 
@@ -12,7 +11,8 @@
     border-radius: $border-radius;
     padding: 15px;
     width: 50vw!important;
-    height: 780px;
+    height: 75vh;
+    overflow-y: auto!important;
 }
 
 .current-canyon-pic {
@@ -22,8 +22,10 @@
 }
 
 .submit-canyon-edit {
-    background-color: $submit!important;
+    background-color: $submit;
     color: white!important;
+    text-transform: capitalize!important;
+    font-family: $font-stack!important;
 }
 
 .folder-icon {

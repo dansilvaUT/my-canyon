@@ -24,7 +24,9 @@ $form-width: 30%;
 
 //Buttons
 $submit: #3bbe1a!important;
-$edit: rgb(248, 216, 112);
+$edit: rgb(250, 225, 0)!important;
+$delete: rgb(243, 53, 53)!important;
+
 .btn {
     font-family: $font-stack!important;
 }
@@ -53,4 +55,5 @@ body {
     position: relative;
     left: 100px;
     margin-bottom: 5px;
+    cursor: pointer;
 }

@@ -1,7 +1,5 @@
 import { Component } from 'react';
 import axios from 'axios';
-import { connect } from 'react-redux';
-import { getCanyon } from '../../../redux/reducers/canyonReducer';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -20,12 +18,8 @@ class EditCanyon extends Component {
         }
     }
     componentDidMount() {
-        // const { id } = this.props.match.params;
-        // const parsedID = parseInt(id);
-        // this.props.getCanyon(this.props.canyonID);
-
-        // const { canyonPic, canyonDesc } = this.props;
-        this.setState({ canyonPic: this.props.canyonPic, description: this.props.canyonDesc });
+        const { canyonPic, canyonDesc } = this.props;
+        this.setState({ canyonPic, description: canyonDesc });
     }
 
     handleInputChange = (e) => {
@@ -34,13 +28,13 @@ class EditCanyon extends Component {
 
 
     editCanyon = () => {
-        axios.put(`/api/canyon/${this.props.canyon_id}`, {
+        axios.put(`/api/canyon/${this.props.canyonID}`, {
             canyon_pic: this.state.canyonPic,
             canyon_description: this.state.description
         })
             .then(() => {
                 alert('Canyon has been updated');
-                this.props.history.goBack();
+                window.location.reload();
             })
             .catch(err => console.log(`Error: ${err.message}`));
     }
@@ -50,7 +44,7 @@ class EditCanyon extends Component {
         return (
             <section className='edit-canyon-wrapper'>
                 <Container className='edit-canyon-container' fixed>
-                    <Typography variant='h4'>
+                    <Typography className='heading' variant='h4'>
                         Submit your Edits here...
                 </Typography>
                     <img className='current-canyon' alt='current-canyon' src={this.state.canyonPic}/>
@@ -80,12 +74,4 @@ class EditCanyon extends Component {
     }
 }
 
-const mapStateToProps = reduxState => {
-    return {
-        canyonPic: reduxState.canyonReducer.canyon.data?.canyon_pic,
-        canyonDesc: reduxState.canyonReducer.canyon.data?.canyon_description,
-        canyon_id: reduxState.canyonReducer.canyon.data?.canyon_id
-    }
-}
-
-export default connect(mapStateToProps, { getCanyon })(EditCanyon);
+export default EditCanyon;

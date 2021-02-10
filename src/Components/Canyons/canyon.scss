@@ -29,6 +29,7 @@
     width: 450px;
     height: 450px;
     object-fit: cover;
+    border-radius: $border-radius;
 }
 
 .canyon-owner-details {
@@ -44,11 +45,20 @@
 .delete-canyon-btn,
 .edit-canyon-btn {
     text-transform: capitalize!important;
+    color: white!important;
 }
 
 .edit-canyon-btn {
-    background-color: $edit!important;
-    color: white!important;
+    background-color: $edit;
+    font-weight: bold!important;
+}
+
+.delete-canyon-btn {
+    background-color: $delete;
+}
+
+.edit-canyon-modal {
+    height: 100vh;
 }
 
 .weather-info {

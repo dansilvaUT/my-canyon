@@ -1,0 +1,16 @@
+@import '../../base';
+
+.add-user-description {
+    background: $heading-color;
+    padding: 10px;
+    border-radius: $border-radius;
+    width: 50vw!important;
+    display: flex!important;
+    flex-direction: column!important;
+}
+
+.submit-description-btn {
+    background-color: $submit;
+    color: $heading-color;
+    font-weight: bold!important;
+}

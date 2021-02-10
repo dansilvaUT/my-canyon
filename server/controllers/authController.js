@@ -5,17 +5,17 @@ module.exports = {
         const { username, email, password } = req.body;
         const db = req.app.get('db');
 
-        const findUser = await db.users.get_user({ username });
+        const findUser = await db.users.check_user({ username });
         const result = findUser[0];
 
         if (result) {
-            return res.status(400).send(`sername already taken!`);
+            return res.status(400).send(`Username already taken!`);
         }
 
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(password, salt);
-//https://robohash.org/${username}.png`
-        let date = new Date();//TODO Need to remove the generated profile pic once S3 is set up
+
+        let date = new Date();
         const newUser = await db.users.register({ username, email, hash, profile_pic: null, about: null, date });
 
         req.session.user = newUser[0];
@@ -26,7 +26,7 @@ module.exports = {
         const { username, password } = req.body;
         const db = req.app.get('db');
 
-        const findUser = await db.users.get_user({ username });
+        const findUser = await db.users.check_user({ username });
         const result = findUser[0];
 
         if (!result) {
@@ -73,7 +73,10 @@ module.exports = {
         const db = req.app.get('db');
 
         await db.users.update_user({ id, description })
-            .then(() => res.sendStatus(200))
+            .then((user) => {
+                req.session.user = user[0];
+                res.status(200).send(req.session.user);
+            })
             .catch(err => console.log(`Controller Error: ${err.message}`));
     }
 }

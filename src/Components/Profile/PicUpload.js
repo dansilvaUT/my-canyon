@@ -5,6 +5,8 @@ import Dropzone from 'react-dropzone';
 import { GridLoader } from 'react-spinners';
 import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { connect } from 'react-redux';
+import { getUser } from '../../redux/reducers/userReducer';
 import './picUpload.scss';
 class PicUpload extends Component {
     constructor() {
@@ -53,8 +55,11 @@ class PicUpload extends Component {
                 this.setState({ isUploading: false, url });
                 // THEN DO SOMETHING WITH THE URL. SEND TO DB USING POST REQUEST OR SOMETHING
                 const image = this.state.url;
-                axios.put('/api/signs3', { image })
-                    .then(() => alert('file uplaoded'));
+                axios.put('/api/s3', { image })
+                    .then((res) => {
+                        this.props.getUser(res.data);
+                        alert('file uplaoded')
+                    });
             })
             .catch(err => {
                 this.setState({
@@ -75,8 +80,6 @@ class PicUpload extends Component {
         const { url, isUploading } = this.state;
         return (
             <div className="App">
-                <h1>Upload</h1>
-                <h1>{url}</h1>
                 <img src={url} alt="" width="250px" />
 
                 <Dropzone className='dropzone'
@@ -102,4 +105,4 @@ class PicUpload extends Component {
     }
 }
 
-export default PicUpload;
+export default connect(null, {getUser})(PicUpload);

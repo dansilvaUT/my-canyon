@@ -19,7 +19,6 @@ class Comment extends Component {
     constructor() {
         super();
         this.state = {
-            comment: '',
             showModal: false
         }
     }
