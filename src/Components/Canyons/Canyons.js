@@ -10,6 +10,10 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Spinner from '../Spinner/Spinner';
+import Modal from 'react-modal';
+import AddCanyon from '../Canyons/AddCanyon/AddCanyon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import './canyons.scss';
 
 class Canyons extends Component {
@@ -17,22 +21,42 @@ class Canyons extends Component {
     constructor() {
         super();
         this.state = {
-            inputField: ''
+            inputField: '',
+            showModal: false
         }
     }
     componentDidMount() {
         this.props.getCanyons();
     }
 
+
+    handleOpenModal = () => {
+        this.setState({ showModal: true });
+    }
+
+    handleCloseModal = () => {
+        this.setState({ showModal: false });
+    }
+
     render() {
         const { canyons } = this.props;
-        console.log(this.props);
+        // console.log(this.props);
         return (
             <>
                 <Container className='canyons-container'>
                     <section className='search search-form-canyons'>
                         <Search onChange={e => this.setState({ inputField: e.target.value })} placeholder='Search for a Canyon' />
-                        <Add />
+                        <Add openModal={this.handleOpenModal} />
+                        <Modal
+                            className='add-canyon-modal'
+                            overlayClassName="Overlay"
+                            ariaHideApp={false}
+                            isOpen={this.state.showModal}
+                        >
+                            <FontAwesomeIcon className='close-modal' onClick={this.handleCloseModal} icon={faTimesCircle} />
+                            <AddCanyon />
+                        </Modal>
+
                     </section>
                     <section className='canyons'>
                         {this.props.loading
@@ -47,7 +71,7 @@ class Canyons extends Component {
                                         <Link key={canyon.canyon_id} to={`/canyon/${canyon.canyon_id}`} className='canyon-link'>
                                             <Card className='canyon-card' key={canyon.canyon_id}>
                                                 <CardContent>
-                                                        <img className='canyons-img' src={canyon.canyon_pic} alt={canyon.canyon_name} />
+                                                    <img className='canyons-img' src={canyon.canyon_pic} alt={canyon.canyon_name} />
                                                     <Typography className="canyon-name" variant="h5" component="h2">
                                                         {canyon.canyon_name}
                                                     </Typography>

@@ -7,7 +7,10 @@ import Comment from '../../Components/Comments/Comment';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import EditCanyon from '../Canyons/EditCanyon/EditCanyon';
+import Modal from 'react-modal';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Spinner from '../Spinner/Spinner';
@@ -21,7 +24,8 @@ class Canyon extends Component {
         super();
         this.state = {
             canyon: {},
-            weather: []
+            weather: [],
+            showModal: false
         }
     }
 
@@ -62,10 +66,14 @@ class Canyon extends Component {
         return ((9 / 5) * temp - 459.67).toFixed(2);
     }
 
+    handleModal = () => {
+        this.setState({ showModal: !this.state.showModal });
+    }
+
     render() {
         const { id } = this.props.match.params;
         const parsedID = parseInt(id);
-        console.log(this.state.weather)
+        console.log('canyon',this.state.canyon)
         const { canyon_id } = this.state.canyon;
         let temp = this.convertToFarenheit(this.state.weather.weather?.temp);
         return (
@@ -101,7 +109,7 @@ class Canyon extends Component {
                                                         >
                                                             Delete
                                                     </Button>
-                                                        <Link className="link" to={`/editcanyon/${canyon_id}`}>
+                                                        {/* <Link className="link" to={`/editcanyon/${canyon_id}`}>
                                                             <Button
                                                                 className="edit-canyon-btn"
                                                                 variant="contained"
@@ -109,22 +117,40 @@ class Canyon extends Component {
                                                             >
                                                                 Edit
                                                     </Button>
-                                                        </Link>
 
+                                                        </Link> */}
+                                                        <Button
+                                                            onClick={() => this.handleModal()}
+                                                            className="edit-canyon-btn"
+                                                            variant="contained"
+                                                            startIcon={<FontAwesomeIcon icon={faEdit} />}
+                                                        >
+                                                            Edit
+                                                        </Button>
+                                                        <Modal
+                                                            className='add-canyon-modal'
+                                                            overlayClassName="Overlay"
+                                                            ariaHideApp={false}
+                                                            isOpen={this.state.showModal}
+                                                        >
+                                                            <FontAwesomeIcon onClick={() => this.handleModal()} className='close-modal' icon={faTimesCircle} />
+
+                                                            <EditCanyon canyonID={canyon_id} canyonDesc={this.state.canyon.canyon_description} canyonPic={this.state.canyon.canyon_pic} />
+                                                        </Modal>
                                                     </>
                                                 )
                                                 : null}
                                         </section>
                                         <section className='weather-info'>
                                             <span className='weather-city'>{this.state.weather.name} </span>
-                                            <span className='weather-temp'>Current Temp: {temp + '\u00B0 F '}</span>
+                                            <span className={`weather-temp ${temp > 50 ? "warm" : "cold"}`}>Current Temp: {temp + '\u00B0 F '}</span>
                                             <FontAwesomeIcon className='temp' icon={faTemperatureLow} />
                                         </section>
                                         <article className="canyon-description">"{this.state.canyon.canyon_description}"</article>
                                     </Container>
 
-                                    <Container className='render-comments' fixed>
-                                        <Typography className='display-comment-header' variant='h4'>Comments</Typography>
+                                    <Container className='render-comments'>
+                                        <Typography className='heading display-comment-header' variant='h4'>Comments</Typography>
                                         <Comment id={parsedID} />
                                     </Container>
                                 </section>

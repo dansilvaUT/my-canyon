@@ -2,7 +2,8 @@
 
 .add-canyon-wrapper {
     width: 100%!important;
-    padding: 15px;
+    overflow-y: auto;
+    height: 80vh;
 }
 
 .add-canyon-container {
@@ -29,3 +30,5 @@
 .folder-icon {
     margin-left: 10px;
 }
+
+

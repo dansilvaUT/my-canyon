@@ -1,0 +1,28 @@
+@import '../../base';
+
+.comment-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: fadeIn ease-in 1;
+    animation-fill-mode: forwards;
+    animation-duration: 300ms;
+}
+
+.submit-comment {
+    background-color: $submit;
+    padding: 10px;
+    border-radius: $border-radius;
+    color: $heading-color;
+    cursor: pointer;
+}
+ 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

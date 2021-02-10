@@ -20,12 +20,12 @@ class EditCanyon extends Component {
         }
     }
     componentDidMount() {
-        const { id } = this.props.match.params;
-        const parsedID = parseInt(id);
-        this.props.getCanyon(parsedID);
+        // const { id } = this.props.match.params;
+        // const parsedID = parseInt(id);
+        // this.props.getCanyon(this.props.canyonID);
 
-        const { canyonPic, canyonDesc } = this.props;
-        this.setState({ canyonPic, description: canyonDesc })
+        // const { canyonPic, canyonDesc } = this.props;
+        this.setState({ canyonPic: this.props.canyonPic, description: this.props.canyonDesc });
     }
 
     handleInputChange = (e) => {
@@ -46,10 +46,11 @@ class EditCanyon extends Component {
     }
 
     render() {
+        console.log('edit canyon', this.props)
         return (
             <section className='edit-canyon-wrapper'>
                 <Container className='edit-canyon-container' fixed>
-                    <Typography variant='h2'>
+                    <Typography variant='h4'>
                         Submit your Edits here...
                 </Typography>
                     <img className='current-canyon' alt='current-canyon' src={this.state.canyonPic}/>

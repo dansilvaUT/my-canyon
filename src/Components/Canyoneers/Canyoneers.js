@@ -3,7 +3,6 @@ import Header from '../../Components/Header/Header';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUsers } from '../../redux/reducers/userReducer';
-import Container from '@material-ui/core/Container';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -37,7 +36,7 @@ class Canyoneers extends Component {
                         )
                         :
                         (
-                            <Container className="canyoneers-container" >
+                            <section className="canyoneers-container" >
                                 {this.props.users?.map(users => (
                                     <Card className="canyoneer-content" key={users.user_id}>
                                         <CardContent className="canyoneer-info">
@@ -58,7 +57,7 @@ class Canyoneers extends Component {
                                         </CardActions>
                                     </Card>
                                 ))}
-                            </Container>
+                            </section>
                         )}
                 </section>
             </>
