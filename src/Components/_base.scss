@@ -46,3 +46,11 @@ body {
 .link:active {
     color: $submit!important;
 }
+
+.close-modal {
+    font-size: 3rem;
+    color: rgba(241, 155, 26, 0.856);
+    position: relative;
+    left: 100px;
+    margin-bottom: 5px;
+}

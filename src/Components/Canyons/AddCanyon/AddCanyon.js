@@ -26,7 +26,7 @@ class AddCanyon extends Component {
     }
 
     addCanyon = () => {
-        const { canyonName, canyonPic, rating, state, description,zipcode } = this.state;
+        const { canyonName, canyonPic, rating, state, description, zipcode } = this.state;
         axios.post('/api/canyons', {
             canyon_name: canyonName,
             canyon_description: description,
@@ -35,17 +35,19 @@ class AddCanyon extends Component {
             canyon_state: state,
             zipcode
         })
-            .then(() => this.props.history.push('/canyons'))
+            .then(() => {
+                alert('Canyon Added!');
+                window.location.reload();
+            })
             .catch(err => console.log("error", err))
-
     }
-
+    
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         return (
             <section className='add-canyon-wrapper'>
                 <Container className='add-canyon-container' fixed>
-                    <Typography variant='h2'>
+                    <Typography className='heading add-canyon-heading' variant='h2'>
                         Add a new Canyon here...
                 </Typography>
                     <TextField
@@ -73,12 +75,14 @@ class AddCanyon extends Component {
                     }
 
                     <TextField
+                        clasName='input'
                         variant='filled'
                         label="What's it look like"
                         name='canyonPic'
                         onChange={e => this.handleInputChange(e)}
                     />
                     <TextField
+                        clasName='input'
                         label='Rating'
                         name='rating'
                         variant='filled'
@@ -91,18 +95,21 @@ class AddCanyon extends Component {
                         onChange={e => this.handleInputChange(e)}
                     />
                     <TextField
+                        clasName='input'
                         variant='filled'
                         label='Zipcode'
                         name='zipcode'
                         onChange={e => this.handleInputChange(e)}
                     />
                     <TextField
+                        clasName='input'
                         variant='filled'
                         label='State'
                         name='state'
                         onChange={e => this.handleInputChange(e)}
                     />
                     <TextField
+                        clasName='input'
                         id="filled-multiline-static"
                         label="Description"
                         name='description'

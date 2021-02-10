@@ -27,7 +27,7 @@
     display: none;
 }
 
-.nav-item {
+.nav-item{
     text-decoration: none;
     color: $heading-color;
     margin: 10px;
@@ -49,7 +49,7 @@
     .mobile-navbar {
         display: flex;
         flex-direction: column;
-        background-color: $heading-background;
+        background-color: $heading-dark;
         border-radius: 15px;
         position: fixed;
         right: 0;

@@ -34,9 +34,9 @@ const Header = (props) => {
                 My Canyon
             </Typography>
             <nav className='navbar'>
-                <Link className='link nav-item' to='/canyons'>Canyons</Link>
-                <Link className='link nav-item' to='/profile'>Profile</Link>
-                <Link className='link nav-item' to='/canyoneers'>Canyoneers</Link>
+                <Link className='link nav-item' to='/canyons'><span>Canyons</span></Link>
+                <Link className='link nav-item' to='/profile'><span>Profile</span></Link>
+                <Link className='link nav-item' to='/canyoneers'><span>Canyoneers</span></Link>
                 {props.id
                     ?
                     (

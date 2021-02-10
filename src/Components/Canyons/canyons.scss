@@ -25,6 +25,22 @@
     padding: 20px 15px;
 }
 
+.add-canyon-modal {
+    margin-top: 100px;
+    animation-name: modalFade;
+    animation-duration: .3s;
+    outline: 0;
+}
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:$form-background;
+  }
+
 .canyon-link {
     text-decoration: none;
 }
@@ -66,3 +82,13 @@
         flex-direction: column;
     }
 }
+
+@keyframes modalFade {
+    from {transform: translateY(-50%);opacity: 0;}
+    to {transform: translateY(0);opacity: 1;}
+  }
+  
+  .modal {
+    animation-name: modalFade;
+    animation-duration: .3s;
+  }

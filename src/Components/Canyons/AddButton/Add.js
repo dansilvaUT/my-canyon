@@ -1,13 +1,10 @@
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
 import './add.scss';
 
-const Add = () => {
+const Add = props => {
     return (
         <>
-            <Link class="link" to='/add'>
-                <Button className='btn add-canyon'variant="contained">Add a Canyon</Button>
-            </Link>
+            <Button className='btn add-canyon' variant="contained" onClick={props.openModal}>Add a Canyon</Button>
         </>
     );
 }

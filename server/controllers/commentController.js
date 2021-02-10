@@ -10,7 +10,6 @@ module.exports = {
         res.status(200).send(comments);
     },
 
-    //MIGHT NOT NEED THIS BUT WILL KEEP IT HERE JUST IN CASE LATER ON
     getComment: async (req, res) => {
         const { id } = req.params;
         const db = req.app.get('db');

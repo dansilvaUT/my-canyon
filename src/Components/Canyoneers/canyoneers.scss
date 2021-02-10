@@ -12,21 +12,33 @@
 }
 
 .canyoneers-container {
-    padding: 10px;
-    margin: 15px;
+    height: 140vh;
     overflow-y: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: flex-start!important;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 20px 15px;
 }
 
 .canyoneer-content {
-    width: 50vw;
+    width: 20vw;
     margin: 10px auto!important;
     background-color: $container-color!important;
+    display: flex!important;
+    flex-direction: column!important;
+    justify-content: space-evenly!important;
+    transition: transform .3s!important;
 }
 
-.canyoneer-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.canyoneer-content:hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75)!important;
 }
 
 .canyoneer-pic {
@@ -37,4 +49,17 @@
 
 .description {
     font-family: $font-article!important;
+}
+
+@media (max-width: 700px){
+    .canyoneers-container {
+        flex-direction: column!important;
+        align-content: center!important;
+        flex-wrap: nowrap!important;
+    }
+
+    .canyoneer-content {
+        margin: 3px!important;
+        width: auto!important;
+    }
 }

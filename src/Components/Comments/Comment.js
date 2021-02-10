@@ -9,6 +9,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
+import AddComment from '../Comments/AddComment/AddComment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import moment from 'moment';
@@ -18,43 +19,41 @@ class Comment extends Component {
     constructor() {
         super();
         this.state = {
-            isOpen: false,
-            comment: ''
+            comment: '',
+            showModal: false
         }
     }
 
-    handleOpen = () => {
-        this.setState({ isOpen: true });
+    handleModal = () => {
+        this.setState({ showModal: !this.state.showModal });
     }
 
-    handleClose = () => {
-        this.setState({ isOpen: false });
-    }
     componentDidMount() {
         const { id } = this.props;
         this.props.getComments(id);
     }
 
-    handleEditToggle = () => {
-        this.setState({ isCommentEditing: !this.state.isCommentEditing })
-    }
-
     deleteComment = (id) => {
-        // axios.delete(`/api/comments/${comment_id}`)
         let comment_id = id;
-        console.log('front-end hit', id)
         axios.delete(`/api/comment/${comment_id}`)
-            .then(() => alert('Comment Deleted'))
+            .then(() => {
+                alert('Comment Deleted');
+                window.location.reload();
+            })
             .catch(err => console.log(`Error: ${err.message}`));
     }
 
     render() {
-        // console.log(this.props)
+        console.log('comment', this.props.id)
         return (
             <>
-                <Link className='link add-comment-link' to={`/addcomment/${this.props.id}`}>
-                    <Button variant="contained" className="add-comment">Comment</Button>
-                </Link>
+                <Button variant="contained" className="add-comment" onClick={() => this.handleModal()}>Comment</Button>
+                {this.state.showModal
+                    ?
+                    (
+                        <AddComment canyonID={this.props.id} />
+                    ) :
+                    null}
                 <Container className="comments-container">
                     <Container className="mapped-comments">
                         {this.props.comments?.map(comment => (
@@ -65,26 +64,26 @@ class Comment extends Component {
                                 </section>
                                 <section className='comment-details'>
                                     <article className="user-comment">
-                                    <span className="comment-timestamp">
+                                        <span className="comment-timestamp">
                                             {moment(comment.date_added).format("MMM Do YY")}
                                         </span>
                                         <p className='comment'>{comment.user_comment}</p>
-                                        
+                                        {comment.user_id === this.props.userID
+                                            ?
+                                            (<>
+                                                <IconButton className='delete' aria-label="delete" color="secondary" onClick={() => this.deleteComment(comment.comment_id)}>
+                                                    <DeleteIcon />
+                                                </IconButton>
+                                                <Link className='link edit-route-btn' to={`/editcomment/${comment.comment_id}`}>
+                                                    <IconButton className='edit' aria-label="delete" color="primary">
+                                                        <FontAwesomeIcon icon={faEdit} />
+                                                    </IconButton>
+                                                </Link>
+                                            </>
+                                            ) : null}
                                     </article>
                                 </section>
-                                {comment.user_id === this.props.userID
-                                    ?
-                                    (<>
-                                        <IconButton aria-label="delete" color="secondary" onClick={() => this.deleteComment(comment.comment_id)}>
-                                            <DeleteIcon />
-                                        </IconButton>
-                                        <Link className='link edit-route-btn' to={`/editcomment/${comment.comment_id}`}>
-                                            <IconButton aria-label="delete" color="primary" onClick={() => this.handleOpen()}>
-                                                <FontAwesomeIcon icon={faEdit} />
-                                            </IconButton>
-                                        </Link>
-                                    </>
-                                    ) : null}
+
                             </Box>
                         ))}
                     </Container>
