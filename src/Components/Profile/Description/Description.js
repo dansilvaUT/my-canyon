@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { getUser } from '../../../redux/reducers/userReducer';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
+import './description.scss';
 
 const Description = props => {
     const [description, setDescription] = useState('');
@@ -15,15 +17,15 @@ const Description = props => {
     const addDescription = () => {
         const { user_id: id } = props;
         axios.put(`/api/edit/${id}`, { description })
-            .then(() => {
+            .then((res) => {
                 alert('Description Added');
-                props.history.goBack();
+                props.getUser(res.data);
             })
             .catch(err => console.log(`Client Error: ${err.message}`));
     }
-    console.log(props)
+
     return (
-        <Container fixed>
+        <Container className='add-user-description' fixed>
             <TextField
                 value={description}
                 name='description'
@@ -34,7 +36,7 @@ const Description = props => {
                 onChange={e => handleInputChange(e.target.value)}
                 variant='filled'
             />
-            <Button className='btn sign-up-btn' variant="outlined" onClick={() => addDescription()}>Update Description</Button>
+            <Button className='btn submit-description-btn' variant="outlined" onClick={() => addDescription()}>Update Description</Button>
         </Container>
     );
 }
@@ -42,7 +44,8 @@ const Description = props => {
 
 const mapStateToProps = reduxState => {
     return {
-        user_id: reduxState.userReducer.user.user_id
+        user_id: reduxState.userReducer.user.user_id,
+        user: reduxState.userReducer.user
     }
 }
-export default connect(mapStateToProps)(Description);
+export default connect(mapStateToProps, { getUser })(Description);

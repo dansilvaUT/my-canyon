@@ -120,7 +120,7 @@ class Chat extends Component {
             </Box>
         ));
 
-        console.log(this.state.messages)
+        console.log(this.props)
         return (
             <section className='chat-wrapper'>
                 <Header />

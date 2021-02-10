@@ -11,7 +11,6 @@ import './header.scss';
 const Header = (props) => {
 
     const [dropdownView, setDropdownView] = useState(false);
-
     //Keep user information on state througout the session on client side.
     useEffect(() => {
         axios.get('/api/auth/me')
@@ -26,7 +25,6 @@ const Header = (props) => {
         axios.get('/api/auth/logout')
             .then(() => props.clearUser());
     }
-
     // console.log(props)
     return (
         <header className='header-container'>

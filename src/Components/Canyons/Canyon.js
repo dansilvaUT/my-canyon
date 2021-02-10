@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import Header from '../../Components/Header/Header';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import Comment from '../../Components/Comments/Comment';
@@ -73,8 +72,8 @@ class Canyon extends Component {
     render() {
         const { id } = this.props.match.params;
         const parsedID = parseInt(id);
-        console.log('canyon',this.state.canyon)
-        const { canyon_id } = this.state.canyon;
+        console.log('canyon', this.state.canyon)
+        const { canyon_id, canyon_description, canyon_pic } = this.state.canyon;
         let temp = this.convertToFarenheit(this.state.weather.weather?.temp);
         return (
             <>
@@ -101,27 +100,16 @@ class Canyon extends Component {
                                                 ? (
                                                     <>
                                                         <Button
-                                                            className="delete-canyon-btn"
+                                                            className="btn delete-canyon-btn"
                                                             variant="contained"
-                                                            color="secondary"
                                                             startIcon={<DeleteIcon />}
                                                             onClick={() => this.deleteCanyon(this.state.canyon.canyon_id)}
                                                         >
                                                             Delete
                                                     </Button>
-                                                        {/* <Link className="link" to={`/editcanyon/${canyon_id}`}>
-                                                            <Button
-                                                                className="edit-canyon-btn"
-                                                                variant="contained"
-                                                                startIcon={<FontAwesomeIcon icon={faEdit} />}
-                                                            >
-                                                                Edit
-                                                    </Button>
-
-                                                        </Link> */}
                                                         <Button
                                                             onClick={() => this.handleModal()}
-                                                            className="edit-canyon-btn"
+                                                            className="btn edit-canyon-btn"
                                                             variant="contained"
                                                             startIcon={<FontAwesomeIcon icon={faEdit} />}
                                                         >
@@ -134,8 +122,7 @@ class Canyon extends Component {
                                                             isOpen={this.state.showModal}
                                                         >
                                                             <FontAwesomeIcon onClick={() => this.handleModal()} className='close-modal' icon={faTimesCircle} />
-
-                                                            <EditCanyon canyonID={canyon_id} canyonDesc={this.state.canyon.canyon_description} canyonPic={this.state.canyon.canyon_pic} />
+                                                            <EditCanyon canyonID={canyon_id} canyonDesc={canyon_description} canyonPic={canyon_pic} />
                                                         </Modal>
                                                     </>
                                                 )

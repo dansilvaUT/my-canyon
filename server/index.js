@@ -65,7 +65,7 @@ app.put('/api/comment/:id', commentCtlr.editComment);
 app.post('/api/weather', weatherCtlr.getWeather);
 
 //USER
-app.put('/api/signs3', userCtlr.uploadPhoto);
+app.put('/api/s3', userCtlr.uploadPhoto);
 //S3
 app.get('/api/signs3', (req, res) => {
     aws.config = {
