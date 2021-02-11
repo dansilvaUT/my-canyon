@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS comments (
 )
 
 CREATE TABLE IF NOT EXISTS chat_rooms (
-    id SERIAL PRIMARY KEY,
+    id SERIAL VARCHAR(100),
     room_id INT,
     user1 INT,
     user2 INT
@@ -45,3 +45,9 @@ CREATE TABLE IF NOT EXISTS messages (
     date_sent TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 
+CREATE TABLE ratings (
+id SERIAL PRIMARY KEY,
+canyon INT REFERENCES canyons(canyon_id),
+user_id INT REFERENCES canyon_users(user_id),
+rating INT NOT NULL 
+)

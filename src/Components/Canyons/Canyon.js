@@ -13,6 +13,7 @@ import Modal from 'react-modal';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Spinner from '../Spinner/Spinner';
+import Rate from '../Rate/Rate';
 import { faTemperatureLow } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -24,7 +25,9 @@ class Canyon extends Component {
         this.state = {
             canyon: {},
             weather: [],
-            showModal: false
+            showModal: false,
+            isRated: null,
+            theRating: null
         }
     }
 
@@ -36,6 +39,11 @@ class Canyon extends Component {
             .then(canyon => {
                 this.setState({ canyon: canyon.data })
             });
+        // axios.post('/api/checkrating', { parsedID })
+        //     .then((res) => {this.setState({ isRated: res.data });console.log('hit',res)})
+        axios.get(`/api/avg/${parsedID}`)
+            .then(res => this.setState({ theRating: res.data.average }))
+            .catch(err => console.log(`Error: ${err.message}`));
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -72,7 +80,7 @@ class Canyon extends Component {
     render() {
         const { id } = this.props.match.params;
         const parsedID = parseInt(id);
-        console.log('canyon', this.state.canyon)
+        console.log('canyon', this.state.theRating)
         const { canyon_id, canyon_description, canyon_pic } = this.state.canyon;
         let temp = this.convertToFarenheit(this.state.weather.weather?.temp);
         return (
@@ -95,7 +103,7 @@ class Canyon extends Component {
                                         <img className='canyon-img' src={this.state.canyon.canyon_pic} alt={this.state.canyon.canyon_name} />
                                         <section className="canyon-owner-details">
                                             <span className="canyon-owner">Added by @{this.state.canyon.username}</span>
-                                            <span className="canyon-rating">Rating: {this.state.canyon.canyon_rating}</span>
+                                            <span className="canyon-rating">Rating: {this.state.theRating}</span>
                                             {this.props.userID === this.state.canyon.canyon_owner
                                                 ? (
                                                     <>
@@ -133,6 +141,13 @@ class Canyon extends Component {
                                             <span className={`weather-temp ${temp > 50 ? "warm" : "cold"}`}>Current Temp: {temp + '\u00B0 F '}</span>
                                             <FontAwesomeIcon className='temp' icon={faTemperatureLow} />
                                         </section>
+                                        {this.state.isRated
+                                            ? (
+                                                null
+                                            )
+                                            : (
+                                                <Rate canyon_id={canyon_id} />
+                                            )}
                                         <article className="canyon-description">"{this.state.canyon.canyon_description}"</article>
                                     </Container>
 
