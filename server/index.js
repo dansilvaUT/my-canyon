@@ -8,6 +8,7 @@ const express = require('express'),
     commentCtlr = require('./controllers/commentController'),
     weatherCtlr = require('./controllers/weatherController'),
     userCtlr = require('./controllers/userController'),
+    ratingCtlr = require('./controllers/ratingController'),
     socket = require('socket.io'),
     { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET, S3_BUCKET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY } = process.env,
     app = express();
@@ -66,6 +67,11 @@ app.post('/api/weather', weatherCtlr.getWeather);
 
 //USER
 app.put('/api/s3', userCtlr.uploadPhoto);
+
+//RATING ENPOINTS
+app.post('/api/rating', ratingCtlr.addRating);
+app.post('/api/checkrating', ratingCtlr.checkIfUserRated);
+app.get('/api/avg/:parsedID', ratingCtlr.getRating);
 //S3
 app.get('/api/signs3', (req, res) => {
     aws.config = {

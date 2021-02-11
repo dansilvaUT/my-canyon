@@ -1,0 +1,13 @@
+@import '../base';
+
+.rating-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.rating-controls {
+    display: flex!important;
+    justify-content: center;
+    align-items: center!important;
+    margin: 5px;
+}
