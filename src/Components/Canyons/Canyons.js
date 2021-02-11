@@ -14,6 +14,7 @@ import Modal from 'react-modal';
 import AddCanyon from '../Canyons/AddCanyon/AddCanyon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import RatingDisplay from '../Rate/RatingDisplay';
 import './canyons.scss';
 
 class Canyons extends Component {
@@ -75,16 +76,13 @@ class Canyons extends Component {
                                                     <Typography className="canyon-name" variant="h5" component="h2">
                                                         {canyon.canyon_name}
                                                     </Typography>
-                                                    <Typography className='card-rating' variant="body2">
-                                                        Rating: {canyon.canyon_rating}
-                                                    </Typography>
+                                                        <RatingDisplay id={canyon.canyon_id}/>
                                                 </CardContent>
                                             </Card>
                                         </Link>
                                     ))}
                                 </>
                             )}
-
                     </section>
                 </Container>
             </>

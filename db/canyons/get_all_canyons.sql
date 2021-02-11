@@ -1,7 +1,6 @@
 SELECT c.canyon_id,  
 c.canyon_name, 
-c.canyon_pic, 
-c.canyon_rating, 
+c.canyon_pic,
 u.username,
 c.zipcode
 FROM canyons c
