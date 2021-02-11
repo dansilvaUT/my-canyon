@@ -26,7 +26,7 @@ module.exports = {
 
     getRating: async (req, res) => {
         const db = req.app.get('db');
-        const { parsedID:canyon_id } = req.params;
+        const { id: canyon_id } = req.params;
         const [query] = await db.ratings.get_rating({ canyon_id });
 
         res.status(200).send(query);
@@ -34,7 +34,7 @@ module.exports = {
 
     checkIfUserRated: async (req, res) => {
         const { user_id } = req.session.user;
-        const { parsedID: canyon } = req.body;
+        const { parsedID: canyon } = req.params;
         const db = req.app.get('db');
 
         let foundRating = false;
@@ -42,7 +42,7 @@ module.exports = {
         console.log(query[0])
         if (query[0]) {
             foundRating = true;
-            return res.status(400).send(foundRating);
+            return res.status(200).send(foundRating);
         }
 
         res.status(200).send(foundRating);

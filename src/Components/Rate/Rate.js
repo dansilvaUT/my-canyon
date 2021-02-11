@@ -18,7 +18,10 @@ const Rate = props => {
         const { canyon_id } = props;
         console.log(rating)
         axios.post('/api/rating', { canyon_id, rating })
-            .then(() => alert('Rating Submitted'))
+            .then(() => {
+                alert('Rating Submitted');
+                window.location.reload();
+            })
             .catch(err => console.log(`Error: ${err.message}`));
     }
 
@@ -27,6 +30,7 @@ const Rate = props => {
             <span>Rate me</span>
             <Container className='rating-controls'>
                 <Rating
+                    className='rating'
                     name='rating'
                     precision={0.5}
                     value={rating}

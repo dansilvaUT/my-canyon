@@ -70,8 +70,8 @@ app.put('/api/s3', userCtlr.uploadPhoto);
 
 //RATING ENPOINTS
 app.post('/api/rating', ratingCtlr.addRating);
-app.post('/api/checkrating', ratingCtlr.checkIfUserRated);
-app.get('/api/avg/:parsedID', ratingCtlr.getRating);
+app.get('/api/checkrating/:parsedID', ratingCtlr.checkIfUserRated);
+app.get('/api/avg/:id', ratingCtlr.getRating);
 //S3
 app.get('/api/signs3', (req, res) => {
     aws.config = {

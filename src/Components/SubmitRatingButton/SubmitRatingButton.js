@@ -4,7 +4,10 @@ import './submitRatingButton.scss';
 const SubmitRatingButton = props => {
     return (
         <section>
-            <Button className='btn submit-rating-btn' variant='contained' onClick={() => props.submitRating()}>Submit Rating</Button>
+            <Button className='btn submit-rating-btn'
+                variant='contained'
+                onClick={() => props.submitRating()}>Submit Rating
+            </Button>
         </section>
     )
 }
