@@ -12,10 +12,11 @@ const Header = (props) => {
 
     const [dropdownView, setDropdownView] = useState(false);
     //Keep user information on state througout the session on client side.
+    const { getUser } = props;
     useEffect(() => {
         axios.get('/api/auth/me')
-            .then(user => props.getUser(user.data));
-    });
+            .then(user => getUser(user.data));
+    }, [getUser]);
 
     const toggleMenu = () => {
         setDropdownView(!dropdownView);
@@ -25,7 +26,7 @@ const Header = (props) => {
         axios.get('/api/auth/logout')
             .then(() => props.clearUser());
     }
-    // console.log(props)
+    console.log(props)
     return (
         <header className='header-container'>
             <Typography className="header-heading" variant="h3" component="h2">

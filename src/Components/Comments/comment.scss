@@ -54,11 +54,19 @@
     color: grey;
 }
 
-.delete,
-.edit {
-    padding: 0!important;
+.delete-comment,
+.edit-comment {
+    padding: 5px;
+    border-radius: $border-radius;
+    color: $heading-color;
 }
 
-.edit {
-    margin-left: 2px!important;
+.delete-comment {
+    background-color: $delete;
+}
+
+.edit-comment {
+    margin-left: 5px!important;
+    background-color: $edit;
+    
 }
