@@ -14,7 +14,6 @@ class AddCanyon extends Component {
         this.state = {
             canyonName: '',
             canyonPic: '',
-            rating: 1,
             state: '',
             description: '',
             zipcode: null
@@ -26,12 +25,11 @@ class AddCanyon extends Component {
     }
 
     addCanyon = () => {
-        const { canyonName, canyonPic, rating, state, description, zipcode } = this.state;
+        const { canyonName, canyonPic, state, description, zipcode } = this.state;
         axios.post('/api/canyons', {
             canyon_name: canyonName,
             canyon_description: description,
             canyon_pic: canyonPic,
-            canyon_rating: rating,
             canyon_state: state,
             zipcode
         })
@@ -79,19 +77,6 @@ class AddCanyon extends Component {
                         variant='filled'
                         label="What's it look like"
                         name='canyonPic'
-                        onChange={e => this.handleInputChange(e)}
-                    />
-                    <TextField
-                        clasName='input'
-                        label='Rating'
-                        name='rating'
-                        variant='filled'
-                        type='number'
-                        InputProps={{
-                            inputProps: {
-                                max: 5, min: 1
-                            }
-                        }}
                         onChange={e => this.handleInputChange(e)}
                     />
                     <TextField

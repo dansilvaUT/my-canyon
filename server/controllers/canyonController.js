@@ -37,7 +37,6 @@ module.exports = {
             canyon_name,
             canyon_description,
             canyon_pic,
-            canyon_rating,
             canyon_state,
             zipcode
         } = req.body;
@@ -50,7 +49,6 @@ module.exports = {
             canyon_name,
             canyon_description,
             canyon_pic,
-            canyon_rating,
             canyon_state,
             user_id,
             date,

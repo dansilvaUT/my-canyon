@@ -4,4 +4,16 @@
     background-color: $submit;
     color: $heading-color;
     font-weight: bold!important;
+    animation: skew 1s infinite;
+    transform: skew(20deg);
+    animation-direction: alternate;
 }
+
+@keyframes skew {
+    0% {
+      transform: skewX(20deg);
+    }
+    100% {
+      transform: skewX(-20deg);
+    }
+  }

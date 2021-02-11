@@ -2,7 +2,7 @@ import { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import { connect } from 'react-redux';
 import Container from '@material-ui/core/Container'
-// import UserCanyon from '../../Components/Profile/UserCanyons/UserCanyon';
+import UserCanyon from '../../Components/Profile/UserCanyons/UserCanyon';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
@@ -28,7 +28,7 @@ class Profile extends Component {
 
     render() {
         const { username, profile_pic, date_added, about } = this.props.user;
-        console.log(this.props.user)
+        // console.log(this.props.user)
         return (
             <>
                 <Header />
@@ -45,13 +45,12 @@ class Profile extends Component {
                                 <PicUpload />
                             }
                             <Typography className='username-heading' variant="h4">@{username}</Typography>
-                            <Typography className='member-heading'>Member since {moment(date_added).format("MMM Do YYYY")}</Typography>
+                            <Typography className='member-heading' variant='h6'>Member since {moment(date_added).format("MMM Do YYYY")}</Typography>
                         </section>
                         <section className="profile-description">
                             {about === null
                                 ? (
                                     <>
-                                        <p>Describe {username} here  </p>
                                         <Button variant="filled" className='add-description-user' onClick={() => this.handleModal()} >Add Description</Button>
                                         <Modal
                                             className='add-canyon-modal'
@@ -70,7 +69,7 @@ class Profile extends Component {
 
                     <Container className="user-canyons-placeholder" fixed>
                         <Typography className='heading profile-canyon-heading' variant="h4">My Canyons</Typography>
-                        {/* <UserCanyon /> */}
+                        <UserCanyon userID={this.props.user.user_id} />
                     </Container>
                 </section>
 
