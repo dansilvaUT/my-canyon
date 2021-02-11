@@ -43,7 +43,7 @@ class Comment extends Component {
     }
 
     render() {
-        console.log('comment', this.props.id)
+        // console.log('comment', this.props.id)
         return (
             <>
                 <Button variant="contained" className="add-comment" onClick={() => this.handleModal()}>Comment</Button>

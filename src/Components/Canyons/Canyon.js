@@ -14,6 +14,7 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Spinner from '../Spinner/Spinner';
 import Rate from '../Rate/Rate';
+import RatingDisplay from '../Rate/RatingDisplay';
 import { faTemperatureLow } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -26,8 +27,7 @@ class Canyon extends Component {
             canyon: {},
             weather: [],
             showModal: false,
-            isRated: null,
-            theRating: null
+            isRated: null
         }
     }
 
@@ -39,11 +39,9 @@ class Canyon extends Component {
             .then(canyon => {
                 this.setState({ canyon: canyon.data })
             });
-        // axios.post('/api/checkrating', { parsedID })
-        //     .then((res) => {this.setState({ isRated: res.data });console.log('hit',res)})
-        axios.get(`/api/avg/${parsedID}`)
-            .then(res => this.setState({ theRating: res.data.average }))
-            .catch(err => console.log(`Error: ${err.message}`));
+
+        axios.get(`/api/checkrating/${parsedID}`)
+            .then((res) => { this.setState({ isRated: res.data }); console.log('hit', res) })
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -80,7 +78,7 @@ class Canyon extends Component {
     render() {
         const { id } = this.props.match.params;
         const parsedID = parseInt(id);
-        console.log('canyon', this.state.theRating)
+        console.log('is rated?', this.state.isRated)
         const { canyon_id, canyon_description, canyon_pic } = this.state.canyon;
         let temp = this.convertToFarenheit(this.state.weather.weather?.temp);
         return (
@@ -103,7 +101,9 @@ class Canyon extends Component {
                                         <img className='canyon-img' src={this.state.canyon.canyon_pic} alt={this.state.canyon.canyon_name} />
                                         <section className="canyon-owner-details">
                                             <span className="canyon-owner">Added by @{this.state.canyon.username}</span>
-                                            <span className="canyon-rating">Rating: {this.state.theRating}</span>
+                                            <span className="canyon-rating">
+                                                <RatingDisplay id={parsedID} />
+                                            </span>
                                             {this.props.userID === this.state.canyon.canyon_owner
                                                 ? (
                                                     <>
