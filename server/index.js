@@ -9,6 +9,7 @@ const express = require('express'),
     weatherCtlr = require('./controllers/weatherController'),
     userCtlr = require('./controllers/userController'),
     ratingCtlr = require('./controllers/ratingController'),
+    path = require('path'),
     socket = require('socket.io'),
     { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET, S3_BUCKET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY } = process.env,
     app = express();
@@ -105,6 +106,12 @@ app.get('/api/signs3', (req, res) => {
     });
 });
 
+
+//Serve Files
+app.use(express.static(__dirname + '/../build'))
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'))
+})
 
 //Sockets
 io.on("connection", function (socket) {
