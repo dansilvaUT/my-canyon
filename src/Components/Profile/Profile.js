@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import Header from '../../Components/Header/Header';
 import { connect } from 'react-redux';
-import Container from '@material-ui/core/Container'
-import UserCanyon from '../../Components/Profile/UserCanyons/UserCanyon';
+// import UserCanyon from '../../Components/Profile/UserCanyons/UserCanyon';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
@@ -61,10 +60,10 @@ const Profile = props => {
                     </section>
                 </section>
 
-                <Container className="user-canyons-placeholder" fixed>
+                {/* <Container className="user-canyons-placeholder" fixed>
                     <Typography className='heading profile-canyon-heading' variant="h4">My Canyons</Typography>
                     <UserCanyon userID={props.user.user_id} />
-                </Container>
+                </Container> */}
             </section>
 
         </>

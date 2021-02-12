@@ -39,7 +39,7 @@ module.exports = {
 
         let foundRating = false;
         const query = await db.ratings.check_rating({ canyon, user_id });
-        console.log(query[0])
+ 
         if (query[0]) {
             foundRating = true;
             return res.status(200).send(foundRating);
