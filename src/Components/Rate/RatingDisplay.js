@@ -7,12 +7,19 @@ import './ratingDisplay.scss';
 const RatingDisplay = props => {
     const [average, setAverage] = useState(0);
 
+    const { id } = props;
     useEffect(() => {
-        const { id } = props;
+        let mounted = true;
         axios.get(`/api/avg/${id}`)
-            .then(res => setAverage(res.data.average))
+            .then(res => {
+                if (mounted) {
+                    setAverage(res.data.average)
+                }
+            })
             .catch(err => console.log(`Error: ${err.message}`));
-    });
+
+        return () => mounted = false;
+    }, [id]);
     // console.log('average', average)
     return (
         <>
