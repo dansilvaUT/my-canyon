@@ -60,7 +60,6 @@ class Canyon extends Component {
     }
 
     getWeather = (zipcode) => {
-        console.log(zipcode)
         axios.post('/api/weather', { zipcode })
             .then(res => this.setState({ weather: res.data }))
             .catch(err => console.log(`Client Error: ${err.message}`));

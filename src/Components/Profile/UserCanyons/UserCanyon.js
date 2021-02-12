@@ -39,7 +39,7 @@ const Canyons = props => {
                                     <Typography className='canyon-name' variant="h5" component="h2">
                                         {canyon.canyon_name}
                                     </Typography>
-                                        Rating: <RatingDisplay id={canyon.canyon_id} />
+                                        Rating: <RatingDisplay id={canyon.canyon_id}/>
                                 </CardContent>
                             </Card>
                         </Link>
