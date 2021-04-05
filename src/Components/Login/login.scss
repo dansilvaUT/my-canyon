@@ -84,3 +84,17 @@
        opacity: 1;
     }
  }
+
+
+ @media(max-width: 830px){
+    .login {
+        width: 300px;
+        padding: 10px;
+    }
+ }
+
+ @media(max-width: 500px){
+     .welcome-heading {
+         font-size: 3rem;
+     }
+ }

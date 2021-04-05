@@ -64,3 +64,13 @@
     color: $heading-color;
     padding: 10px 0;
 }
+
+@media(max-width: 460px){
+    .user-container {
+        flex-direction: column;
+    }
+
+    .profile-description {
+        justify-content: center;
+    }
+}

@@ -35,7 +35,11 @@
     font-size: 1.3rem;
 }
 
-@media(max-width: 650px){
+@media(max-width: 820px){
+    .header-heading {
+        font-size: 2rem!important;
+    }
+
     .navbar {
         display: none;
     }
