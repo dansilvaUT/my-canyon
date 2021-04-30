@@ -1,4 +1,4 @@
-# Welcom My-Canyon
+# Welcome My-Canyon
 
 This project was a personal project requirement for DevMountain's Web Development
 Program.
